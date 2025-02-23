@@ -4,6 +4,14 @@
 * Assign old `kongDom.createElement` to `createElementFromJsonML` instead of showing warning message only.
 * Remove `kongDom.clearElement`, `kongDom.setAria`.
 
+## 0.8.8 (250223)
+* Fix `kongEvent.listenMulti()`
+  which didn't support objects with `handleEvent()` method as listeners.
+* Update `kongDom.setAttributes()`
+  which now supports setting multiple listeners on same event at the same time.
+* Update `kongDom.isEventInElement()`
+  which now supports specifying the element by a query selector string.
+
 ## 0.8.7 (250204)
 * Update `kongDom.setAttributes()`
   which now removes the specified attribute if `undefined` is assigned.

@@ -42,7 +42,7 @@ export function unlisten(target, ...args) {
 export function listenMulti(targets, eventTypes, listeners, options) {
     if (typeof targets === 'string') targets = document.querySelectorAll(targets);
     if (typeof eventTypes === 'string') eventTypes = eventTypes.split(',').map(s => s.trim());
-    if (typeof listeners === 'function') listeners = [listeners];
+    if (! (listeners instanceof Array)) listeners = [listeners];
     targets.forEach(target => {
         eventTypes.forEach(eventType => {
             listeners.forEach(listener => {

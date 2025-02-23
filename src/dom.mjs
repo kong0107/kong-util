@@ -323,11 +323,12 @@ export function clearElement(elem = this) {
  *  Check wheather a mouse event happens inside an element, even its target is not the element.
  *  Could be assign to `Element.prototype`.
  * @param {MouseEvent} event
- * @param {Element} [elem=this]
+ * @param {Element|string} [elem=this] the Element or the query selector to it
  * @returns {boolean}
  */
 export function isEventInElement(event, elem = this) {
     const {clientX: x, clientY: y} = event;
+    if (typeof elem === 'string') elem = $(elem);
     return [...elem.getClientRects()].some(r =>
         x >= r.left && x <= r.right && y >= r.top && y <= r.bottom
     );
@@ -472,7 +473,7 @@ function setAttributesInElement(attributes, elem = this) {
 
         name = name.toLowerCase();
         if (name.startsWith('on')) {
-            listen(elem, name.slice(2), value);
+            listenMulti(elem, name.slice(2), value);
             continue;
         }
         switch (name) {

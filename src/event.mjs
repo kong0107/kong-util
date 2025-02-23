@@ -33,7 +33,7 @@ export function unlisten(target, ...args) {
 /**
  * @func listenMulti
  * @desc Add multi listener to multi events on multi targets
- * @param {string | NodeList | Array.<EventTarget> } targets
+ * @param {string | Element | NodeList | Array.<EventTarget> } targets
  * @param {string | Array.<string>} eventTypes
  * @param {Function | Array.<Function>} listeners
  * @param {boolean | Object} [options]
@@ -41,8 +41,9 @@ export function unlisten(target, ...args) {
  */
 export function listenMulti(targets, eventTypes, listeners, options) {
     if (typeof targets === 'string') targets = document.querySelectorAll(targets);
+    if (! ('forEach' in targets)) targets = [targets];
     if (typeof eventTypes === 'string') eventTypes = eventTypes.split(',').map(s => s.trim());
-    if (! (listeners instanceof Array)) listeners = [listeners];
+    if (! ('forEach' in listeners)) listeners = [listeners];
     targets.forEach(target => {
         eventTypes.forEach(eventType => {
             listeners.forEach(listener => {

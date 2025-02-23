@@ -4,6 +4,10 @@
 * Assign old `kongDom.createElement` to `createElementFromJsonML` instead of showing warning message only.
 * Remove `kongDom.clearElement`, `kongDom.setAria`.
 
+## 0.8.9 (250223)
+* Fix `kongEvent.listenMulti()`
+  which didn't support `Element` as the 1st argument.
+
 ## 0.8.8 (250223)
 * Fix `kongEvent.listenMulti()`
   which didn't support objects with `handleEvent()` method as listeners.

@@ -91,6 +91,19 @@
                     ],
                     'provides a compact format for transporting XML-based markup as JSON which allows it to be losslessly converted back to its original form.'
                 ],
+                ['p',
+                    'You can create elements and even with multiple listeners with a readable structure, such as ',
+                    ['button', {
+                            type: 'button',
+                            onclick: [
+                                alerter('You have clicked the button.'),
+                                logger('mulitiple functions into a single event')
+                            ]
+                        },
+                        'this button'
+                    ],
+                    '.'
+                ],
                 ['p', 'Use tools in your browser to inspect the DOM and then see the source code of this page.'],
                 ['hr', {
                     "role": "presentation",

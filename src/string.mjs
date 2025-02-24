@@ -242,6 +242,131 @@ export function modifyURLBySearchParams(url, searchParams) {
     return url;
 }
 
+/**
+ * @func date_format
+ * @desc Simulate `DateTime::format` of PHP.
+ * @see {@link https://www.php.net/manual/zh/datetime.format.php}
+ * @param {string} format
+ * @param {Date | string} date
+ * @returns {string}
+ */
+function date_format(format, date = new Date()) {
+	const d = (date instanceof Date) ? date : new Date(date);
+    const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Octoboer', 'November', 'December'];
+
+	return format.split('').map(c => {
+        switch (c) {
+            case 'd': return zf(d.getDate());
+            case 'D': return weekdays[d.getDay()].slice(0, 3);
+            case 'j': return d.getDate();
+            case 'l': return weekdays[d.getDay()];
+            case 'N': return (d.getDay() + 6) % 7 + 1;
+            case 'S': {
+                switch (d.getDate()) {
+                    case 1: case 21: case 31: return 'st';
+                    case 2: case 22: return 'nd';
+                    case 3: case 23: return 'rd';
+                    default: return 'th';
+                }
+            }
+            case 'w': return d.getDay();
+            case 'z': return (
+                    Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())
+                    - Date.UTC(d.getFullYear())
+                ) / 86400000; // https://stackoverflow.com/questions/8619879/#40975730
+            case 'W': {
+                const thursday = new Date(
+                    d.getFullYear(),
+                    d.getMonth(),
+                    d.getDate() + 4 - (d.getDay() || 7)
+                );
+                const firstDay = new Date(thursday.getFullYear(), 0, 1);
+                return zf(Math.floor((thursday - firstDay) / 86400000 / 7) + 1);
+            }
+            case 'F': return months[d.getMonth()];
+            case 'm': return zf(d.getMonth() + 1);
+            case 'M': return months[d.getMonth()].slice(0, 3);
+            case 'n': return d.getMonth() + 1;
+            case 't': return (new Date(d.getFullYear(), d.getMonth() + 1, 0)).getDate();
+            case 'L': {
+                const leapDay = new Date(d.getFullYear(), 1, 29);
+                return (leapDay.getDate() === 29) ? 1 : 0;
+            }
+            case 'o': {
+                const thursday = new Date(
+                    d.getFullYear(),
+                    d.getMonth(),
+                    d.getDate() + 4 - (d.getDay() || 7)
+                );
+                return zf(thursday.getFullYear(), 4);
+            }
+            case 'X': return zf(d.getFullYear(), 4, true);
+            case 'x': {
+                const year = d.getFullYear();
+                return (year >= 10000 ? '+' : '') + zf(year, 4);
+            }
+            case 'Y': return zf(d.getFullYear(), 4);
+            case 'y': {
+                let y = d.getFullYear() % 100;
+                if (y < 0) y += 100;
+                return zf(y);
+            }
+            case 'a': return (d.getHours() < 12) ? 'am' : 'pm';
+            case 'A': return (d.getHours() < 12) ? 'AM' : 'PM';
+            case 'B': return zf(Math.floor((d.getTime() + 3600000) % 86400000 / 86400), 3);
+            case 'g': return (d.getHours() + 11) % 12 + 1;
+            case 'G': return d.getHours();
+            case 'h': return zf((d.getHours() + 11) % 12 + 1);
+            case 'H': return zf(d.getHours());
+            case 'i': return zf(d.getMinutes());
+            case 's': return zf(d.getSeconds());
+            case 'u': return zf(d.getMilliseconds(), 3) + '000';
+            case 'v': return zf(d.getMilliseconds(), 3);
+            case 'e': return Intl.DateTimeFormat().resolvedOptions().timeZone;
+            case 'I': {
+                const stdOffset = Math.max(
+                    new Date(d.getFullYear(), 0).getTimezoneOffset(),
+                    new Date(d.getFullYear(), 6).getTimezoneOffset()
+                );
+                return (d.getTimezoneOffset() < stdOffset) ? 1 : 0;
+            }
+            case 'O':
+            case 'P':
+            case 'p': {
+                let tzo = d.getTimezoneOffset();
+                if (tzo === 0 && c === 'p') return 'Z';
+                const neg = tzo >= 0;
+                if (! neg) tzo = - tzo;
+
+                let result = neg ? '-' : '+';
+                result += zf(Math.floor(tzo / 60));
+                if (c !== 'O') result += ':';
+                result += zf(tzo % 60);
+                return result;
+            }
+            case 'T': {
+                return new Intl.DateTimeFormat(undefined, { timeZoneName: "short" })
+                    .formatToParts(d)
+                    .find(part => part.type === 'timeZoneName').value;
+            }
+            case 'Z': return d.getTimezoneOffset() * -60;
+            case 'c': return date_format('Y-m-d', d) + 'T' + date_format('H:i:sP', d);
+            case 'r': return date_format('D, d M Y H:i:s P', d);
+            case 'U': return Math.round(d.getTime() / 1000);
+
+            default: return c;
+        }
+    }).join('');
+
+    function zf(num, digit = 2, signed = false) {
+        const neg = num < 0;
+        if (neg) num = - num;
+        const posSign = signed ? '+' : '';
+        return (neg ? '-' : posSign) + num.toString().padStart(digit, '0');
+    }
+}
+
 
 Object.assign(utilString, {
     camelize, kebabize,
@@ -249,7 +374,8 @@ Object.assign(utilString, {
     compareVersionNumbers,
     toCSV, parseCSV,
     base64ToBlob,
-    modifyURLBySearchParams
+    modifyURLBySearchParams,
+    date_format
 });
 
 export default utilString;

@@ -4,6 +4,10 @@
 * Assign old `kongDom.createElement` to `createElementFromJsonML` instead of showing warning message only.
 * Remove `kongDom.clearElement`, `kongDom.setAria`.
 
+## 0.8.10
+* Add `kongString.date_format()`
+  which simulates PHP's `DateTime::format()`.
+
 ## 0.8.9 (250223)
 * Fix `kongEvent.listenMulti()`
   which didn't support `Element` as the 1st argument.

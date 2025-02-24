@@ -20,6 +20,7 @@ See also [demo](https://kong0107.github.io/kong-util/demo.html), [documentation]
 </script>
 ```
 
+
 #### module way
 
 ```html
@@ -29,12 +30,14 @@ See also [demo](https://kong0107.github.io/kong-util/demo.html), [documentation]
 </script>
 ```
 
+
 ### in Node.js
 
 #### install
 ```bash
 npm install --save kong-util
 ```
+
 
 #### use
 ```js
@@ -47,7 +50,9 @@ import("kong-util").then(kongUtil => {
 });
 ```
 
+
 ## Usage
+
 
 ### basic
 
@@ -78,6 +83,7 @@ $("body").append("some text"); // `$` works as `document.querySelector` if assig
 ```
 
 **Warning**: Some function names may conflict with other library, such as `$` in jQuery.
+
 
 ### categories
 
@@ -124,6 +130,7 @@ arr.shuffle();
 
 For all functions, see [documentation](https://kong0107.github.io/kong-util/doc/).
 
+
 ### utilArray
 
 Go sequentially through the elements one by one:
@@ -139,6 +146,7 @@ await kongUtil.mapAsync(fetch, [url1, url2]);
 // after prototype extended
 await [url1, url2].mapAsync(fetch);
 ```
+
 
 ### utilAsync
 
@@ -159,6 +167,7 @@ fetchAutoReject(url3)
     err => console.error('timeout or error')
 );
 ```
+
 
 ### utilDom
 
@@ -237,6 +246,7 @@ emulateArray("map", x => x*x, {a: 2, b: 3});
 objectMap(x => x*x, {a: 2, b: 3});
 ```
 
+
 ### utilString
 
 * camelize
@@ -246,6 +256,8 @@ objectMap(x => x*x, {a: 2, b: 3});
 * toCSV
 * parseCSV
 * base64ToBlob
+* date_format: simulates PHP's `DateTime::format`
+
 
 ### utilWeb
 

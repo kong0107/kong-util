@@ -243,15 +243,27 @@ export function modifyURLBySearchParams(url, searchParams) {
 }
 
 /**
- * @func date_format
+ * @func dateFormat
  * @desc Simulate `DateTime::format` of PHP.
  * @see {@link https://www.php.net/manual/zh/datetime.format.php}
  * @param {string} format
  * @param {Date | string} date
  * @returns {string}
  */
-function date_format(format, date = new Date()) {
-	const d = (date instanceof Date) ? date : new Date(date);
+function dateFormat(format, date = new Date()) {
+	let d = (date instanceof Date) ? date : new Date(date);
+    if (isNaN(d.getTime())) {
+        const match = /(\d{2}):(\d{2})(:(\d{2}))?/.exec(date);
+        if (! match) {
+            console.warn('Invalid Date');
+            return '';
+        }
+        d = new Date();
+        d.setHours(match[1]);
+        d.setMinutes(match[2]);
+        if (match[3]) d.setSeconds(match[4]);
+    }
+
     const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Octoboer', 'November', 'December'];
 
@@ -351,8 +363,8 @@ function date_format(format, date = new Date()) {
                     .find(part => part.type === 'timeZoneName').value;
             }
             case 'Z': return d.getTimezoneOffset() * -60;
-            case 'c': return date_format('Y-m-d', d) + 'T' + date_format('H:i:sP', d);
-            case 'r': return date_format('D, d M Y H:i:s P', d);
+            case 'c': return dateFormat('Y-m-d', d) + 'T' + dateFormat('H:i:sP', d);
+            case 'r': return dateFormat('D, d M Y H:i:s P', d);
             case 'U': return Math.round(d.getTime() / 1000);
 
             default: return c;
@@ -375,7 +387,7 @@ Object.assign(utilString, {
     toCSV, parseCSV,
     base64ToBlob,
     modifyURLBySearchParams,
-    date_format
+    dateFormat
 });
 
 export default utilString;

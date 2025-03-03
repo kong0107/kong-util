@@ -256,7 +256,7 @@ objectMap(x => x*x, {a: 2, b: 3});
 * toCSV
 * parseCSV
 * base64ToBlob
-* date_format: simulates PHP's `DateTime::format`
+* dateFormat: simulates PHP's `DateTime::format`
 
 
 ### utilWeb

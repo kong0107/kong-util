@@ -242,6 +242,7 @@ export function modifyURLBySearchParams(url, searchParams) {
     return url;
 }
 
+
 /**
  * @func dateFormat
  * @desc Simulate `DateTime::format` of PHP.
@@ -250,7 +251,7 @@ export function modifyURLBySearchParams(url, searchParams) {
  * @param {Date | string} date
  * @returns {string}
  */
-function dateFormat(format, date = new Date()) {
+export function dateFormat(format, date = new Date()) {
 	let d = (date instanceof Date) ? date : new Date(date);
     if (isNaN(d.getTime())) {
         const match = /(\d{2}):(\d{2})(:(\d{2}))?/.exec(date);
@@ -380,6 +381,18 @@ function dateFormat(format, date = new Date()) {
 }
 
 
+/**
+ * @func numberFormat
+ * @desc A shortcut to call a method of an anonymous `Intl.NumberFormat`.
+ * @param {Number|BigInt|string} number
+ * @param {Object} [options={}]
+ * @returns {string}
+ */
+export function numberFormat(number, options = {}) {
+    return new Intl.NumberFormat(options.locales, options).format(number);
+}
+
+
 Object.assign(utilString, {
     camelize, kebabize,
     parseChineseNumber,
@@ -387,7 +400,8 @@ Object.assign(utilString, {
     toCSV, parseCSV,
     base64ToBlob,
     modifyURLBySearchParams,
-    dateFormat
+    dateFormat,
+    numberFormat
 });
 
 export default utilString;

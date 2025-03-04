@@ -4,6 +4,12 @@
 * Assign old `kongDom.createElement` to `createElementFromJsonML` instead of showing warning message only.
 * Remove `kongDom.clearElement`, `kongDom.setAria`.
 
+## 0.8.12 (250304)
+* Fix `kongString.dateFormat()`
+  which could not be called before calling `kontUtil.use()`.
+* Add `kongString.numberFormat()`
+  which is a shortcut to call `Intl.NumberFormat.prototype.format`.
+
 ## 0.8.11 (250303)
 * Rename `kongString.date_format()` into `dateFormat()`
   and make it support time string without date.

@@ -13,7 +13,7 @@ export * from './core.mjs';
  * @param {*} source - string and those supported by `createImageBitmap()` in Web API
  * @param {string} [option] - used only if `source` is pure base64 string (instead of dataURL)
  * @param {Object} [option] - passed as the 2nd argument of `fetch()`
- * @returns {Promise.<ImageBitmap>}
+ * @returns {Promise<ImageBitmap>}
  */
 export async function readImage(source, option) {
     if (source instanceof ImageBitmap) return source;
@@ -32,7 +32,7 @@ export async function readImage(source, option) {
  * @func canvasTo
  * @param {HTMLCanvasElement} canvas
  * @param {string} returnType - `bitmap`, `blob`, `dataURL`, or `canvas`
- * @returns {Promise.<*>}
+ * @returns {Promise<*>}
  */
 export async function canvasTo(canvas, returnType, format, quality) {
     switch (returnType) {
@@ -68,7 +68,7 @@ export async function canvasTo(canvas, returnType, format, quality) {
  * @param {string} [settings.format=image/png] - MIME
  * @param {number} [settings.quality] - between `0` and `1`
  * @param {string} [settings.returnType=canvas] - `canvas`, `blob`, or `dataURL`
- * @returns {Promise.<*>}
+ * @returns {Promise<*>}
  *
  * @example /// resize the chosen file and then show it
     resizeImage($('[type=file]').files[0], {scale: .5, returnType: 'dataURL'})

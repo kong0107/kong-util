@@ -258,7 +258,7 @@ export function createElementFromJsonML(jsonml, namespace) {
         return document.createTextNode(jsonml);
 
     let [tag, attributes, ...children] = jsonml;
-    if (typeof jsonml[1] !== 'object' || jsonml[1] instanceof Array) {
+    if (jsonml[1] === null || typeof jsonml[1] !== 'object' || jsonml[1] instanceof Array) {
         attributes = {};
         [tag, ...children] = jsonml;
     }

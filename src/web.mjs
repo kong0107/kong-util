@@ -65,19 +65,19 @@ export async function fetchEx(resource, options) {
  * @func fetchStrict
  * @desc Similar to `fetchEx()` but rejects if HTTP error (e.g "404 not found").
  * @param {any[]} args - same as `fetchEx()`
- * @returns {Promise.<Response>}
+ * @returns {Promise<Response>}
  */
 export async function fetchStrict(...args) {
     const response = await fetchEx(...args);
     if (response.ok) return response;
-    throw new ReferenceError(response.statusText);
+    throw response;
 }
 
 /**
  * @func fetchJSON
  * @desc Download a JSON file and deserialize it.
  * @param {...any} args - same as `fetchEx()`
- * @returns {Promise.<Object>}
+ * @returns {Promise<Object>}
  */
 export function fetchJSON(...args) {
     return fetchStrict(...args).then(res => res.json());
@@ -87,7 +87,7 @@ export function fetchJSON(...args) {
  * @func fetchText
  * @desc Download a plain text file and read it.
  * @param {...any} args - same as `fetchEx()`
- * @returns {Promise.<string>}
+ * @returns {Promise<string>}
  */
 export function fetchText(...args) {
     return fetchStrict(...args).then(res => res.text());
@@ -97,7 +97,7 @@ export function fetchText(...args) {
  * @func fetchDOM
  * @desc Download an HTML file and parse it to `HTMLDocument`
  * @param {...any} args - same as `fetchEx()`
- * @returns {Promise.<HTMLDocument>}
+ * @returns {Promise<HTMLDocument>}
  */
 export function fetchDOM(...args) {
     return fetchText(...args).then(html => parseHTML(html, 0));
@@ -107,7 +107,7 @@ export function fetchDOM(...args) {
  * @func fetchCSV
  * @desc Download a CSV file and parse it to an array of objects
  * @param {...any} args - same as `fetchEx()`
- * @returns {Promise.<Object>}
+ * @returns {Promise<Object>}
  */
 export function fetchCSV(...args) {
     return fetchText(...args).then(csv => parseCSV(csv));
@@ -118,7 +118,7 @@ export function fetchCSV(...args) {
  * @desc Promise version of `FileReader`.
  * @param {Blob} blob
  * @param {string} type - `arrayBuffer`, `binaryString`, `dataURL`, or `text`
- * @returns {Promise.<any>}
+ * @returns {Promise<any>}
  */
 export function readFile(blob, type) {
     const method = 'readAs' + type.charAt(0).toUpperCase() + type.slice(1);

@@ -4,6 +4,12 @@
 * Assign old `kongDom.createElement` to `createElementFromJsonML` instead of showing warning message only.
 * Remove `kongDom.clearElement`, `kongDom.setAria`.
 
+## 0.8.13 (250315)
+* Modify `kongWeb.fetchStrict()`
+  which now rejects a `Response` instead of `ReferenceError` in case `Response.ok` is not true.
+* Fix `kongDom.createElementFromJsonML()`
+  which didn't accept JsonML array with `null` as the 1st element.
+
 ## 0.8.12 (250304)
 * Fix `kongString.dateFormat()`
   which could not be called before calling `kontUtil.use()`.

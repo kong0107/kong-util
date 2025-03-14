@@ -42,7 +42,7 @@ export function objectMap(callback, target = this) {
  * @param {Function} callback
  * @param {Object} [target=this]
  * @param {boolean} [skipReturn=false]
- * @returns {Promise.<Object|undefined>}
+ * @returns {Promise<Object|undefined>}
  */
 export async function objectMapAsync(callback, target = this, skipReturn = false) {
     const results = {};

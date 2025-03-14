@@ -110,7 +110,7 @@ export function unlistens() {
  * @param {boolean} [options.stopPropagation] - wheather to call `Event.stopPropagation`
  * @param {boolean} [options.stopImmediatePropagation] - wheather to call `Event.stopImmediatePropagation`
  *
- * @returns {Promise.<Event>}
+ * @returns {Promise<Event>}
  *
  * @example /// rejects if no click to `document.body` in 1 second
     waitForEvent(document.body, "click", 1000)

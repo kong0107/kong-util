@@ -46,7 +46,7 @@ export function shuffle(target = this) {
  * @func everyAsync
  * @param {Function} callback
  * @param {Array} [target=this]
- * @returns {Promise.<boolean>}
+ * @returns {Promise<boolean>}
  */
 export async function everyAsync(callback, target = this) {
     return (await mapAsync(callback, target)).every(x => x);
@@ -56,7 +56,7 @@ export async function everyAsync(callback, target = this) {
  * @func filterAsync
  * @param {Function} callback
  * @param {Array} [target=this]
- * @returns {Promise.<Array>}
+ * @returns {Promise<Array>}
  */
 export async function filterAsync(callback, target = this) {
     const results = [];
@@ -71,7 +71,7 @@ export async function filterAsync(callback, target = this) {
  * @param {Function} callback
  * @param {Array} [target=this]
  * @param {boolean} [returnIndex=false]
- * @returns {Promise.<*>}
+ * @returns {Promise<*>}
  */
 export async function findAsync(callback, target = this, returnIndex = false) {
     for (let i = 0; i < target.length; ++i)
@@ -84,7 +84,7 @@ export async function findAsync(callback, target = this, returnIndex = false) {
  * @func findIndexAsync
  * @param {Function} callback
  * @param {Array} [target=this]
- * @returns {Promise.<integer>}
+ * @returns {Promise<integer>}
  */
 export function findIndexAsync(callback, target = this) {
     return findAsync(callback, target, true);
@@ -95,7 +95,7 @@ export function findIndexAsync(callback, target = this) {
  * @param {Function} callback
  * @param {Array} [target=this]
  * @param {boolean} [returnIndex=false]
- * @returns {Promise.<*>}
+ * @returns {Promise<*>}
  */
 export async function findLastAsync(callback, target = this, returnIndex = false) {
     for (let i = target.length - 1; i >= 0; --i)
@@ -108,7 +108,7 @@ export async function findLastAsync(callback, target = this, returnIndex = false
  * @func findLastIndexAsync
  * @param {Function} callback
  * @param {Array} [target=this]
- * @returns {Promise.<integer>}
+ * @returns {Promise<integer>}
  */
 export function findLastIndexAsync(callback, target = this) {
     return findLastAsync(callback, target, true);
@@ -118,7 +118,7 @@ export function findLastIndexAsync(callback, target = this) {
  * @func forEachAsync
  * @param {Function} callback
  * @param {Array} [target=this]
- * @returns {Promise.<undefined>}
+ * @returns {Promise<undefined>}
  */
 export async function forEachAsync(callback, target = this) {
     return mapAsync(callback, target, true);
@@ -129,7 +129,7 @@ export async function forEachAsync(callback, target = this) {
  * @param {Function} callback
  * @param {Array} [target=this]
  * @param {boolean} [skipReturn=false]
- * @returns {Promise.<Array>}
+ * @returns {Promise<Array>}
  */
 export async function mapAsync(callback, target = this, skipReturn = false) {
     const results = skipReturn ? undefined : [];
@@ -145,7 +145,7 @@ export async function mapAsync(callback, target = this, skipReturn = false) {
  * @param {Function} callback
  * @param {*} initial
  * @param {Array} [target=this]
- * @returns {Promise.<*>}
+ * @returns {Promise<*>}
  */
 export async function reduceAsync(callback, initial, target = this) {
     let acc = initial, startingIndex = 0;
@@ -164,7 +164,7 @@ export async function reduceAsync(callback, initial, target = this) {
  * @param {Function} callback
  * @param {*} initial
  * @param {Array} [target=this]
- * @returns {Promise.<*>}
+ * @returns {Promise<*>}
  */
 export async function reduceRightAsync(callback, initial, target = this) {
     let acc = initial, startingIndex = target.length - 1;

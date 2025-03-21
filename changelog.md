@@ -4,6 +4,10 @@
 * Assign old `kongDom.createElement` to `createElementFromJsonML` instead of showing warning message only.
 * Remove `kongDom.clearElement`, `kongDom.setAria`.
 
+## 0.8.14 (250321)
+* Add `kongObject.objectFlat()`
+  which flattens an object.
+
 ## 0.8.13 (250315)
 * Modify `kongWeb.fetchStrict()`
   which now rejects a `Response` instead of `ReferenceError` in case `Response.ok` is not true.

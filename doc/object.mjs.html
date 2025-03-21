@@ -120,10 +120,34 @@ export async function objectReduceAsync(callback, initial, target = this) {
 }
 
 
+/**
+ * @func objectFlat
+ * @desc Flatten an object
+ * @param {Object} obj
+ * @param {Integer} [depth=Infinity]
+ * @param {string} [separator='.']
+ * @param {string} [prefix='']
+ * @returns {Object}
+ *
+ * @example /// returns {x.y: 3, x.q.a: true, x.q.b: null, z: 7}
+    objectFlat({x: {y: 3, q: {a: true, b: null}}, z: 7});
+ */
+export function objectFlat(obj, depth = Infinity, separator = '.', prefix = '') {
+    const result = {};
+    for (let k in obj) {
+        if (depth &amp;&amp; obj[k]?.constructor === Object)
+            Object.assign(result, objectFlat(obj[k], depth - 1, separator, prefix + k + separator));
+        else result[prefix + k] = obj[k];
+    }
+    return result;
+}
+
+
 Object.assign(utilObject, {
     emulateArray,
     objectMap, objectMapAsync,
-    objectReduce, objectReduceAsync
+    objectReduce, objectReduceAsync,
+    objectFlat
 });
 
 export default utilObject;

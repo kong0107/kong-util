@@ -1349,224 +1349,6 @@ For more complicated cases, use <code>semver</code> or <code>compare-versions</c
     
 
     
-    <h4 class="name" id="~parseChineseNumber"><span class="type-signature">(inner) </span>parseChineseNumber<span class="signature">(string, forceString<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {number|string|NaN}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    <p>Both traditional and simplified chinese numbers are supported.
-Not guaranteed to validate the string.
-Returns string if the number reaches <code>Number.MAX_SAFE_INTEGER</code> or <code>forceString</code> is given true.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>string</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>forceString</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    false
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="string.mjs.html">string.mjs</a>, <a href="string.mjs.html#line33">line 33</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">number</span>
-|
-
-<span class="param-type">string</span>
-|
-
-<span class="param-type">NaN</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
     <h4 class="name" id="~parseCSV"><span class="type-signature">(inner) </span>parseCSV<span class="signature">(csv, hasHeader<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Array}</span></h4>
     
 
@@ -1777,6 +1559,224 @@ Returns string if the number reaches <code>Number.MAX_SAFE_INTEGER</code> or <co
 
     <pre class="prettyprint"><code>/// returns [['3', '4'], ['7,', '9"']]
     parseCSV('"3",4\r\r\n\n"7,","9"""\r\n', false)</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~parseChineseNumber"><span class="type-signature">(inner) </span>parseChineseNumber<span class="signature">(string, forceString<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {number|string|NaN}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Both traditional and simplified chinese numbers are supported.
+Not guaranteed to validate the string.
+Returns string if the number reaches <code>Number.MAX_SAFE_INTEGER</code> or <code>forceString</code> is given true.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>string</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>forceString</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="string.mjs.html">string.mjs</a>, <a href="string.mjs.html#line33">line 33</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+|
+
+<span class="param-type">string</span>
+|
+
+<span class="param-type">NaN</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
 
 
 
@@ -2050,13 +2050,13 @@ Returns string if the number reaches <code>Number.MAX_SAFE_INTEGER</code> or <co
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-kongUtil.html">kongUtil</a></li><li><a href="module-kongUtilArray.html">kongUtilArray</a></li><li><a href="module-kongUtilAsync.html">kongUtilAsync</a></li><li><a href="module-kongUtilCore.html">kongUtilCore</a></li><li><a href="module-kongUtilDebug.html">kongUtilDebug</a></li><li><a href="module-kongUtilDom.html">kongUtilDom</a></li><li><a href="module-kongUtilEvent.html">kongUtilEvent</a></li><li><a href="module-kongUtilImage.html">kongUtilImage</a></li><li><a href="module-kongUtilObject.html">kongUtilObject</a></li><li><a href="module-kongUtilString.html">kongUtilString</a></li><li><a href="module-kongUtilWeb.html">kongUtilWeb</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-kongUtil.html">kongUtil</a></li><li><a href="module-kongUtilArray.html">kongUtilArray</a></li><li><a href="module-kongUtilAsync.html">kongUtilAsync</a></li><li><a href="module-kongUtilBootstrap.html">kongUtilBootstrap</a></li><li><a href="module-kongUtilCore.html">kongUtilCore</a></li><li><a href="module-kongUtilDebug.html">kongUtilDebug</a></li><li><a href="module-kongUtilDom.html">kongUtilDom</a></li><li><a href="module-kongUtilEvent.html">kongUtilEvent</a></li><li><a href="module-kongUtilImage.html">kongUtilImage</a></li><li><a href="module-kongUtilObject.html">kongUtilObject</a></li><li><a href="module-kongUtilString.html">kongUtilString</a></li><li><a href="module-kongUtilWeb.html">kongUtilWeb</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a>
 </footer>
 
 <script> prettyPrint(); </script>

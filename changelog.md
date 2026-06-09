@@ -1,8 +1,23 @@
 # ChangeLog of kong-util
 
-## future (0.9.0 expected)
-* Assign old `kongDom.createElement` to `createElementFromJsonML` instead of showing warning message only.
-* Remove `kongDom.clearElement`, `kongDom.setAria`.
+## 0.9.0 (260609)
+* Rename `kongDom.createElementFromJsonML` into `createElement`;
+  `createElementFromJsonML` still works but triggers warning of deprecation.
+* Remove `kongDom.clearElement`.
+* Add `kongDom.createInputComplex`
+  which:
+  1. creates `<input>`, `<label>` and maybe `<datalist>`;
+  2. links them with auto-generated random id (if not specified explicitly); and
+  3. wraps them with a `<div>`.
+* Add `kongDom.createSelectElement`
+  which creates `<select>` and `<option>`s within it.
+* Add `kongBootstrap`
+  which contains functions creating wrapped form elements and `<label>` with [Bootstrap](https://getbootstrap.com/) styling class names.
+  * `bsInputBasic` implements basic [form control](https://getbootstrap.com/docs/5.3/forms/form-control/);
+  * `bsInputFloatingLabel` implements [floating label](https://getbootstrap.com/docs/5.3/forms/floating-labels);
+  * `bsCheckbox`, `bsRadio`, and `bsSwitch` implement [checks & radios](https://getbootstrap.com/docs/5.3/forms/checks-radios/); and
+  * `bsSelectFloatingLabel` implements [`<select>` with floating `<label>`](https://getbootstrap.com/docs/5.3/forms/floating-labels/#selects).
+
 
 ## 0.8.14 (250321)
 * Add `kongObject.objectFlat()`

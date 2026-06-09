@@ -210,14 +210,14 @@ function createNodeSelector(filterRule, base) {
 
 
 /**
- * @func createElementFromJsonML
+ * @func createElement
  * @desc Use JsonML to create an HTML element. For attributes setting, see `setAttributes`.
  * @see {@link setAttributes}
  * @param {JsonML} jsonml
  * @param {string} [namespace] - set this to use `createElementNS()`
  * @returns {Element | TextNode}
  */
-export function createElementFromJsonML(jsonml, namespace) {
+export function createElement(jsonml, namespace) {
     if (typeof namespace !== 'string') namespace = null; // make this function safe for functions such as `Array.map()`.
 
     if (jsonml instanceof Node)
@@ -255,7 +255,7 @@ export function createElementFromJsonML(jsonml, namespace) {
             acc.push(cur);
             return acc;
         }, [])
-        .map(c => createElementFromJsonML(c, ns))
+        .map(c => createElement(c, ns))
     ;
 
     elem.append(...children);
@@ -294,26 +294,12 @@ export function createElementFromTemplate(template) {
 
 /**
  * @deprecated
- * @func createElement
- * @desc my old JSON format to represent DOM; shall be replaced by `createElementFromJsonML`.
- * @see {@link https://github.com/kong0107/jsml }
+ * @func createElementFromJsonML
+ * @desc used to be distinguished with my old JSON format between 0.6.0 to 0.8.x
  */
-export function createElement() {
-    console.error('`kongUtilDom.createElement()` has been removed. Use `kongUtilDom.createElementFromJsonML` instead.');
-}
-
-
-/**
- * @deprecated
- * @func clearElement
- * @desc call `Element.replaceChildren()` without any argument specified.
- * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Element/replaceChildren#emptying_a_node }
- * @param {Element} [elem=this]
- * @returns {void}
- */
-export function clearElement(elem = this) {
-    console.warn('`kongUtilDom.clearElement()` has been deprecated. Use `Element.replaceChildren()` instead.');
-    elem.replaceChildren();
+export function createElementFromJsonML() {
+    console.warn('`kongUtilDom.createElementFromJsonML()` has been deprecated. Use `kongUtilDom.createElement` instead.');
+    return createElement(...arguments);
 }
 
 
@@ -343,7 +329,7 @@ export function isEventInElement(event, elem = this) {
  * @returns {undefined}
  */
 export function downloadURL(href, filename) {
-    createElementFromJsonML(
+    createElement(
         ['a', {href, download: filename}]
     ).click();
 }
@@ -523,7 +509,7 @@ function setAttributesInElement(attributes, elem = this) {
                 break;
             }
             // case 'aria': break; // shall has been delete before this for-loop
-            // case 'namespace': break; // shall has been deleted within createElementFromJsonML
+            // case 'namespace': break; // shall has been deleted within createElement
             default: {
                 if (isLikeNull(value)) elem.removeAttribute(name);
                 else if (value === true) elem.setAttribute(name, '');
@@ -590,6 +576,132 @@ export function setAttributes(s, attributes) {
 
 
 /**
+ * @func createInputComplex
+ * @desc Create a container wrapping an input, a label, and maybe a datalist; with auto-generated UUID for linking to each other.
+ * @param {Object} inputAttrs - attributes of \<input>
+ * @param {string | JsonML | HTMLlabelContentent} labelContent - content of \<label> or itself
+ * @param {string} [wrapClassName=''] - className for wrapping \<div>
+ * @param {string} [labelPosition='before'] - 'before' or 'after'
+ * @param {Array.<string>} [datalist=null] - content of \<datalist>. Empty array still results in creating \<datalist>. Use null/false/undefined to disable that.
+ * @returns {HTMLDivElement}
+ *
+ * @example /// basic usage
+ *  createInputComplex({type: 'text'}, 'labelHere~');
+ *
+ * @example /// checked checkbox
+ *  createInputComplex(
+ *      {type: 'checkbox', checked: true},
+ *      'here is a checkbox',
+ *      '',
+ *      'after'
+ *  );
+ *
+ * @example /// file selector
+ *  createInputComplex(
+ *      {type: 'file', style: 'display: none;'},
+ *      ['span', {style: 'border: 1px solid #444;'}, 'File Selector']
+ *  );
+ */
+export function createInputComplex(
+    inputAttrs,
+    labelContent,
+    wrapClassName = '',
+    labelPosition = 'before',
+    datalist = null
+) {
+    const inputId = inputAttrs.id = inputAttrs.id || crypto.randomUUID();
+
+    let jsonML = ['input', inputAttrs];
+    if (inputAttrs.type === 'textarea') {
+        const newAttrMap = Object.assign({}, inputAttrs);
+        delete newAttrMap.type;
+        let text = '';
+        if (Object.hasOwn(inputAttrs, 'value')) {
+            text = inputAttrs.value || '';
+            delete newAttrMap.value;
+        }
+        inputAttrs = newAttrMap;
+        jsonML = ['textarea', newAttrMap, text];
+    }
+    const inputElem = createElement(jsonML);
+
+    if (typeof labelContent === 'string')
+        labelContent = createElement(['label', {for: inputId}, labelContent]);
+    else if (Array.isArray(labelContent)) {
+        if (labelContent[0] !== 'label')
+            labelContent = createElement(['label', {for: inputId}, labelContent]);
+        else {
+            labelContent = createElement(labelContent);
+            labelContent.setAttribute('for', inputId);
+        }
+    }
+    else if (!(labelContent instanceof Element))
+        throw new TypeError('Unknown type ' + typeof labelContent);
+
+    const container = createElement(['div', {class: wrapClassName}]);
+    switch (labelPosition) {
+        case 'after': {
+            container.append(inputElem, labelContent);
+            break;
+        }
+        case 'before': {
+            container.append(labelContent, inputElem);
+            break;
+        }
+        default:
+            throw new RangeError(`Unknown position ${labelPosition}`);
+    }
+
+    if (datalist) {
+        const listId = crypto.randomUUID();
+        inputElem.setAttribute('list', listId);
+        container.append(e(
+            ['datalist', {id: listId}, ...datalist.map(value => ['option', {value}])]
+        ));
+    }
+
+    return container;
+}
+
+
+/**
+ * @func createSelectElement
+ * @desc Create \<select> and \<option>s inside.
+ * @param {Object} attrs - attributes of \<select>
+ * @param {Array.<string> | Map | Object} options - key-value pairs of \<option>s; or strings for \<option>s with same value and textContent.
+ * @param {string | Array.<string>} - value(s) of selected \<option>s
+ * @returns {HTMLSelectElement}
+ *
+ * @example /// basic usage
+ *  createSelectElement({}, ['a', 'b', 'c'], 'b');
+ *
+ * @example /// use object as key-value pairs. note "key"s would be shown texts.
+ *  createSelectElement(
+ *      {multiple: true, style: 'height: 6em'},
+ *      {text1: 'value1', text2: 'value2', text3: 'value3'},
+ *      ['value2', 'value3']
+ *  );
+ *
+ */
+export function createSelectElement(attrs, options, selected = []) {
+    let optionMLs = [];
+    if (typeof selected === 'string') selected = [selected];
+
+    if (Array.isArray(options))
+        optionMLs = options.map(value => ['option', {value}, value]);
+    else if (options instanceof Map)
+        options.forEach((value, key) => optionMLs.push(['option', {value}, key]));
+    else for (const key in options)
+        optionMLs.push(['option', {value: options[key]}, key]);
+
+    optionMLs.forEach(jsonml => {
+        if (selected.includes(jsonml[1].value)) jsonml[1].selected = true;
+    });
+    return createElement(['select', attrs, ...optionMLs]);
+}
+
+
+/**
  * @func extendElementPrototype
  * @desc Add some methods to `Element` class.
  */
@@ -613,7 +725,7 @@ export const extendElementPrototype = () => {
         const origin = p[method];
         p[method] = function () {
             const nodes = [...arguments].map(node => {
-                return (node instanceof Array) ? createElementFromJsonML(node) : node;
+                return (node instanceof Array) ? createElement(node) : node;
             });
             return origin.apply(this, nodes);
         };
@@ -626,12 +738,13 @@ Object.assign(utilDom, {
     createElementFromTemplate,
     createElementFromJsonML,
     createElement,
-    clearElement,
     isEventInElement,
     downloadURL, downloadData,
     setText,
     setAria,
     setAttributes,
+    createInputComplex,
+    createSelectElement,
     extendElementPrototype
 });
 

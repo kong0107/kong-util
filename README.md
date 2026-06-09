@@ -175,14 +175,21 @@ fetchAutoReject(url3)
 // creates an HTMLElement by a string
 parseHTML("<EM>hi!</em>");
 
-// creates an HTMLElement by JsonML
-createElementFromJsonML(
+// creates an HTMLElement by [JsonML](http://www.jsonml.org/)
+createElement(
     ["ul",
         ["li", "first"],
         ["li",
             ["em", "second"]
         ]
     ]
+);
+
+// creates a `<select>` with `<option>`s
+createSelectElement(
+    {name: 'foo'}, //< attributes of `<select>`
+    ['a', 'b', 'c'], //< options; could be an Object or a Map
+    'b' //< default selected option
 );
 
 // sets attributes of an Element
@@ -277,4 +284,37 @@ fetch(url4, {method: 'POST', body: new URLSearchParams(params)})
 // new way
 fetchJSON(url4, {method: 'POST', body: params})
 .then(obj => { /* ... */ });
+```
+
+
+### utilBootstrap
+
+In webpage which has import [Bootstrap](https://getbootstrap.com/) CSS, you can create some form elements with `<label for>`.
+
+```js
+document.body.append(
+    bsSelectFloatingLabel(
+        {name: 'bar'},
+        'floating label',
+        ['a1', 'a2', 'a3'],
+        'a3'
+    )
+);
+```
+
+The above code would do the same as adding the following HTML before `</body>`:
+```html
+<div class="form-floating">
+    <select
+        name="bar"
+        class="form-select"
+        id="52a9347d-a055-46c3-ab4d-599e2270896e"
+    >
+        <option value="a1">a1</option>
+        <option value="a2">a2</option>
+        <option value="a3" selected>a3</option>
+    </select>
+    <label for="52a9347d-a055-46c3-ab4d-599e2270896e">floating label</label>
+</div>
+<!-- ref: https://getbootstrap.com/docs/5.3/forms/floating-labels/#selects -->
 ```

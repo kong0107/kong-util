@@ -22,6 +22,7 @@ import utilImage from "./image.mjs";
 import utilObject from "./object.mjs";
 import utilString from "./string.mjs";
 import utilWeb from "./web.mjs";
+import utilBootstrap from "./bootstrap.mjs";
 
 export * from "./core.mjs";
 export * from "./array.mjs";
@@ -33,6 +34,7 @@ export * from "./image.mjs";
 export * from "./object.mjs";
 export * from "./string.mjs";
 export * from "./web.mjs";
+export * from "./bootstrap.mjs";
 
 /**
  * @func extendPrototype
@@ -55,6 +57,7 @@ Object.assign(kongUtil,
     utilObject,
     utilString,
     utilWeb,
+    utilBootstrap,
     {extendPrototype}
 );
 

@@ -584,288 +584,7 @@ however, for selectors have no matches, empty array is returned instead of null.
     
 
     
-    <h4 class="name" id="~clearElement"><span class="type-signature">(inner) </span>clearElement<span class="signature">(elem<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {void}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    <p>call <code>Element.replaceChildren()</code> without any argument specified.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>elem</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Element</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    this
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <dt class="important tag-deprecated">Deprecated:</dt><dd class="yes-def tag-deprecated"><ul class="dummy"><li>Yes</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line306">line 306</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/replaceChildren#emptying_a_node">https://developer.mozilla.org/en-US/docs/Web/API/Element/replaceChildren#emptying_a_node</a></li>
-        </ul>
-    </dd>
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">void</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="~createElement"><span class="type-signature">(inner) </span>createElement<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    <p>my old JSON format to represent DOM; shall be replaced by <code>createElementFromJsonML</code>.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <dt class="important tag-deprecated">Deprecated:</dt><dd class="yes-def tag-deprecated"><ul class="dummy"><li>Yes</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line295">line 295</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a href="https://github.com/kong0107/jsml">https://github.com/kong0107/jsml</a></li>
-        </ul>
-    </dd>
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="~createElementFromJsonML"><span class="type-signature">(inner) </span>createElementFromJsonML<span class="signature">(jsonml, namespace<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Element|TextNode}</span></h4>
+    <h4 class="name" id="~createElement"><span class="type-signature">(inner) </span>createElement<span class="signature">(jsonml, namespace<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Element|TextNode}</span></h4>
     
 
     
@@ -1073,6 +792,96 @@ however, for selectors have no matches, empty array is returned instead of null.
     
 
     
+    <h4 class="name" id="~createElementFromJsonML"><span class="type-signature">(inner) </span>createElementFromJsonML<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>used to be distinguished with my old JSON format between 0.6.0 to 0.8.x</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <dt class="important tag-deprecated">Deprecated:</dt><dd class="yes-def tag-deprecated"><ul class="dummy"><li>Yes</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line295">line 295</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="~createElementFromTemplate"><span class="type-signature">(inner) </span>createElementFromTemplate<span class="signature">(template)</span><span class="type-signature"> &rarr; {Node}</span></h4>
     
 
@@ -1236,6 +1045,561 @@ however, for selectors have no matches, empty array is returned instead of null.
     
 
 
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~createInputComplex"><span class="type-signature">(inner) </span>createInputComplex<span class="signature">(inputAttrs, labelContent, wrapClassName<span class="signature-attributes">opt</span>, labelPosition<span class="signature-attributes">opt</span>, datalist<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {HTMLDivElement}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Create a container wrapping an input, a label, and maybe a datalist; with auto-generated UUID for linking to each other.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputAttrs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>attributes of &lt;input&gt;</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>labelContent</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">JsonML</span>
+|
+
+<span class="param-type">HTMLlabelContentent</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>content of &lt;label&gt; or itself</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>wrapClassName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    ''
+                
+                </td>
+            
+
+            <td class="description last"><p>className for wrapping &lt;div&gt;</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>labelPosition</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'before'
+                
+                </td>
+            
+
+            <td class="description last"><p>'before' or 'after'</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>datalist</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;string></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last"><p>content of &lt;datalist&gt;. Empty array still results in creating &lt;datalist&gt;. Use null/false/undefined to disable that.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line578">line 578</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">HTMLDivElement</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>/// basic usage createInputComplex({type: 'text'}, 'labelHere~');</code></pre>
+
+    <pre class="prettyprint"><code>/// checked checkbox createInputComplex(     {type: 'checkbox', checked: true},     'here is a checkbox',     '',     'after' );</code></pre>
+
+    <pre class="prettyprint"><code>/// file selector createInputComplex(     {type: 'file', style: 'display: none;'},     ['span', {style: 'border: 1px solid #444;'}, 'File Selector'] );</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~createSelectElement"><span class="type-signature">(inner) </span>createSelectElement<span class="signature">(attrs, options)</span><span class="type-signature"> &rarr; {HTMLSelectElement}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Create &lt;select&gt; and &lt;option&gt;s inside.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>attrs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>attributes of &lt;select&gt;</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;string></span>
+|
+
+<span class="param-type">Map</span>
+|
+
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>key-value pairs of &lt;option&gt;s; or strings for &lt;option&gt;s with same value and textContent.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code></code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Array.&lt;string></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>value(s) of selected &lt;option&gt;s</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line667">line 667</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">HTMLSelectElement</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>/// basic usage createSelectElement({}, ['a', 'b', 'c'], 'b');</code></pre>
+
+    <pre class="prettyprint"><code>/// use object as key-value pairs. note "key"s would be shown texts. createSelectElement(     {multiple: true, style: 'height: 6em'},     {text1: 'value1', text2: 'value2', text3: 'value3'},     ['value2', 'value3'] );</code></pre>
 
 
 
@@ -1448,7 +1812,7 @@ however, for selectors have no matches, empty array is returned instead of null.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line352">line 352</a>
+        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line338">line 338</a>
     </li></ul></dd>
     
 
@@ -1629,7 +1993,7 @@ however, for selectors have no matches, empty array is returned instead of null.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line338">line 338</a>
+        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line324">line 324</a>
     </li></ul></dd>
     
 
@@ -1735,7 +2099,7 @@ however, for selectors have no matches, empty array is returned instead of null.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line592">line 592</a>
+        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line704">line 704</a>
     </li></ul></dd>
     
 
@@ -2203,7 +2567,7 @@ Could be assign to <code>Element.prototype</code>.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line320">line 320</a>
+        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line306">line 306</a>
     </li></ul></dd>
     
 
@@ -2702,7 +3066,7 @@ may cause browsers not creating elements but only the text nodes within them.</p
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line411">line 411</a>
+        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line397">line 397</a>
     </li></ul></dd>
     
 
@@ -3107,7 +3471,7 @@ may cause browsers not creating elements but only the text nodes within them.</p
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line537">line 537</a>
+        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line523">line 523</a>
     </li></ul></dd>
     
 
@@ -3351,7 +3715,7 @@ may cause browsers not creating elements but only the text nodes within them.</p
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line381">line 381</a>
+        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line367">line 367</a>
     </li></ul></dd>
     
 
@@ -3736,13 +4100,13 @@ may cause browsers not creating elements but only the text nodes within them.</p
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-kongUtil.html">kongUtil</a></li><li><a href="module-kongUtilArray.html">kongUtilArray</a></li><li><a href="module-kongUtilAsync.html">kongUtilAsync</a></li><li><a href="module-kongUtilCore.html">kongUtilCore</a></li><li><a href="module-kongUtilDebug.html">kongUtilDebug</a></li><li><a href="module-kongUtilDom.html">kongUtilDom</a></li><li><a href="module-kongUtilEvent.html">kongUtilEvent</a></li><li><a href="module-kongUtilImage.html">kongUtilImage</a></li><li><a href="module-kongUtilObject.html">kongUtilObject</a></li><li><a href="module-kongUtilString.html">kongUtilString</a></li><li><a href="module-kongUtilWeb.html">kongUtilWeb</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-kongUtil.html">kongUtil</a></li><li><a href="module-kongUtilArray.html">kongUtilArray</a></li><li><a href="module-kongUtilAsync.html">kongUtilAsync</a></li><li><a href="module-kongUtilBootstrap.html">kongUtilBootstrap</a></li><li><a href="module-kongUtilCore.html">kongUtilCore</a></li><li><a href="module-kongUtilDebug.html">kongUtilDebug</a></li><li><a href="module-kongUtilDom.html">kongUtilDom</a></li><li><a href="module-kongUtilEvent.html">kongUtilEvent</a></li><li><a href="module-kongUtilImage.html">kongUtilImage</a></li><li><a href="module-kongUtilObject.html">kongUtilObject</a></li><li><a href="module-kongUtilString.html">kongUtilString</a></li><li><a href="module-kongUtilWeb.html">kongUtilWeb</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a>
 </footer>
 
 <script> prettyPrint(); </script>

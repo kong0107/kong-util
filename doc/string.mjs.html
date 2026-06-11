@@ -40,7 +40,7 @@ export * from "./core.mjs";
  * @returns {string}
  */
 export function camelize(kebab) {
-    return kebab.replace(
+    return kebab.replaceAll(
         /-([a-z]\w+)/g,
         m => m[1].toUpperCase() + m.slice(2)
     );
@@ -54,7 +54,10 @@ export function camelize(kebab) {
  * @returns {string}
  */
 export function kebabize(camel) {
-    return camel.replace(/[A-Z]+(?![a-z])|[A-Z]/g, (m, p1) => (p1 ? "-" : "") + m.toLowerCase());
+    return camel.replaceAll(
+        /[A-Z]+(?![a-z])|[A-Z]/g,
+        (m, p1) => (p1 ? "-" : "") + m.toLowerCase()
+    );
 }
 
 
@@ -443,7 +446,7 @@ export default utilString;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-kongUtil.html">kongUtil</a></li><li><a href="module-kongUtilArray.html">kongUtilArray</a></li><li><a href="module-kongUtilAsync.html">kongUtilAsync</a></li><li><a href="module-kongUtilBootstrap.html">kongUtilBootstrap</a></li><li><a href="module-kongUtilCore.html">kongUtilCore</a></li><li><a href="module-kongUtilDebug.html">kongUtilDebug</a></li><li><a href="module-kongUtilDom.html">kongUtilDom</a></li><li><a href="module-kongUtilEvent.html">kongUtilEvent</a></li><li><a href="module-kongUtilImage.html">kongUtilImage</a></li><li><a href="module-kongUtilObject.html">kongUtilObject</a></li><li><a href="module-kongUtilString.html">kongUtilString</a></li><li><a href="module-kongUtilWeb.html">kongUtilWeb</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-kongUtil.html">kongUtil</a></li><li><a href="module-kongUtilArray.html">kongUtilArray</a></li><li><a href="module-kongUtilAsync.html">kongUtilAsync</a></li><li><a href="module-kongUtilBootstrap.html">kongUtilBootstrap</a></li><li><a href="module-kongUtilCore.html">kongUtilCore</a></li><li><a href="module-kongUtilDebug.html">kongUtilDebug</a></li><li><a href="module-kongUtilDom.html">kongUtilDom</a></li><li><a href="module-kongUtilEvent.html">kongUtilEvent</a></li><li><a href="module-kongUtilHtmlElem.html">kongUtilHtmlElem</a></li><li><a href="module-kongUtilImage.html">kongUtilImage</a></li><li><a href="module-kongUtilObject.html">kongUtilObject</a></li><li><a href="module-kongUtilString.html">kongUtilString</a></li><li><a href="module-kongUtilWeb.html">kongUtilWeb</a></li></ul>
 </nav>
 
 <br class="clear">

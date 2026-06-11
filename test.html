@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>test page</title>
     <script src="./dist/dom.js"></script>
+    <script src="./dist/html-elem.js"></script>
     <script src="./dist/event.js"></script>
     <script src="./dist/image.js"></script>
     <script src="./dist/bootstrap.js"></script>
@@ -24,8 +25,8 @@
             kongUtilDom.$('img').src = await kongUtilImage.resizeImage(file, {fit: 'scaleDown', height: 1000, returnType: 'dataURL'});
         });
         document.body.append(
-            kongUtilDom.createInputComplex({type: 'file', style: 'display: none;'}, ['span', {style: 'border: 1px solid #444; cursor: pointer;'}, 'File Selector']),
-            kongUtilDom.createSelectElement(
+            kongUtilHtmlElem.createInputComplex({type: 'file', style: 'display: none;'}, ['span', {style: 'border: 1px solid #444; cursor: pointer;'}, 'File Selector']),
+            kongUtilHtmlElem.createSelectElement(
                 {multiple: true, style: 'height: 5em'},
                 {text1: 'value1', text2: 'value2', text3: 'value3'},
                 ['value2', 'value3']

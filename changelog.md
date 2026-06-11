@@ -1,17 +1,23 @@
 # ChangeLog of kong-util
 
+## 0.9.1
+* Create `kongUtilHtmlElem` category
+  which focus on HTMLElement and sperated from `kongUtilDom`.
+* Move `createElement()`, `createElementFromTemplate()`, and `extendElementPrototype()` into kongUtilHtmlElem`;
+  but leave `kongUtilDom.createElementFromJson()` usable with warning.
+
 ## 0.9.0 (260609)
-* Rename `kongDom.createElementFromJsonML` into `createElement`;
-  `createElementFromJsonML` still works but triggers warning of deprecation.
-* Remove `kongDom.clearElement`.
-* Add `kongDom.createInputComplex`
+* Rename `kongUtilDom.createElementFromJsonML()` into `createElement()`;
+  `createElementFromJsonML()` still works but triggers warning of deprecation.
+* Remove `kongUtilDom.clearElement()`.
+* Add `kongUtilDom.createInputComplex()`
   which:
   1. creates `<input>`, `<label>` and maybe `<datalist>`;
   2. links them with auto-generated random id (if not specified explicitly); and
   3. wraps them with a `<div>`.
-* Add `kongDom.createSelectElement`
+* Add `kongUtilDom.createSelectElement()`
   which creates `<select>` and `<option>`s within it.
-* Add `kongBootstrap`
+* Create `kongUtilBootstrap` category
   which contains functions creating wrapped form elements and `<label>` with [Bootstrap](https://getbootstrap.com/) styling class names.
   * `bsInputBasic` implements basic [form control](https://getbootstrap.com/docs/5.3/forms/form-control/);
   * `bsInputFloatingLabel` implements [floating label](https://getbootstrap.com/docs/5.3/forms/floating-labels);
@@ -20,55 +26,55 @@
 
 
 ## 0.8.14 (250321)
-* Add `kongObject.objectFlat()`
+* Add `kongUtilObject.objectFlat()`
   which flattens an object.
 
 ## 0.8.13 (250315)
-* Modify `kongWeb.fetchStrict()`
+* Modify `kongUtilWeb.fetchStrict()`
   which now rejects a `Response` instead of `ReferenceError` in case `Response.ok` is not true.
-* Fix `kongDom.createElementFromJsonML()`
+* Fix `kongUtilDom.createElementFromJsonML()`
   which didn't accept JsonML array with `null` as the 1st element.
 
 ## 0.8.12 (250304)
-* Fix `kongString.dateFormat()`
+* Fix `kongUtilString.dateFormat()`
   which could not be called before calling `kontUtil.use()`.
-* Add `kongString.numberFormat()`
+* Add `kongUtilString.numberFormat()`
   which is a shortcut to call `Intl.NumberFormat.prototype.format`.
 
 ## 0.8.11 (250303)
-* Rename `kongString.date_format()` into `dateFormat()`
+* Rename `kongUtilString.date_format()` into `dateFormat()`
   and make it support time string without date.
 
 ## 0.8.10 (250225)
-* Add `kongString.date_format()`
+* Add `kongUtilString.date_format()`
   which simulates PHP's `DateTime::format()`.
 
 ## 0.8.9 (250223)
-* Fix `kongEvent.listenMulti()`
+* Fix `kongUtilEvent.listenMulti()`
   which didn't support `Element` as the 1st argument.
 
 ## 0.8.8 (250223)
-* Fix `kongEvent.listenMulti()`
+* Fix `kongUtilEvent.listenMulti()`
   which didn't support objects with `handleEvent()` method as listeners.
-* Update `kongDom.setAttributes()`
+* Update `kongUtilDom.setAttributes()`
   which now supports setting multiple listeners on same event at the same time.
-* Update `kongDom.isEventInElement()`
+* Update `kongUtilDom.isEventInElement()`
   which now supports specifying the element by a query selector string.
 
 ## 0.8.7 (250204)
-* Update `kongDom.setAttributes()`
+* Update `kongUtilDom.setAttributes()`
   which now removes the specified attribute if `undefined` is assigned.
   This affects `createElementFromJsonML`.
 * Improve documentation.
-  Add `@typedef JsonML` and `@typedef NullLike` into `kongDom`.
+  Add `@typedef JsonML` and `@typedef NullLike` into `kongUtilDom`.
 
 ## 0.8.6 (250204)
-* Update `kongDom.createElementFromJsonML()`
+* Update `kongUtilDom.createElementFromJsonML()`
   which now treats `null`, `undefined`, and `boolean` as empty string
   and merge adjacent text nodes.
 
 ## 0.8.5 (250202)
-* Add `kongString.modifyURLBySearchParams()`
+* Add `kongUtilString.modifyURLBySearchParams()`
   which sets `searchParams` of a `URL` or URL string.
 
 ## 0.8.4 (250130)
@@ -76,26 +82,26 @@
   to support JsonML inputs after calling `extendElementPrototype()`.
 
 ## 0.8.3 (250130)
-* Add `kongWeb.fetchEx()`
+* Add `kongUtilWeb.fetchEx()`
   which is made from `fetchSrict()` but resolves even in HTTP error.
   `body` of the request could be an `HTMLFormElement`.
   This affects `fetchStrict()`.
 
 ## 0.8.2 (250129)
-* Update `kongWeb.fetchStrict()`
+* Update `kongUtilWeb.fetchStrict()`
   which now supports a normal object to be request's `body`,
   and GET is allowed to have `body` in some cases.
-* Rename `kongEvent.listens()` and `kongEvent.unlistens()`
-  into `listenMulti()` and `unlistenMulti()` respectively.
-* Update `kongDom.setAttributesInElement()`
+* Rename `listens()` and `unlistens()` from `kongUtilEvent`
+  to `listenMulti()` and `unlistenMulti()` respectively.
+* Update `kongUtilDom.setAttributesInElement()`
   which now treats boolean values into `setAttribute(attr, '')` or `removeAttribute(attr)`.
   This affects `setAttributes` and `createElementFromJsonML`.
 
 ## 0.8.1 (250126)
 * Update `README.md`
-* Add `kongObject.objectMap()` and `kongObject.objectMapAsync()`
+* Add `kongUtilObject.objectMap()` and `kongUtilObject.objectMapAsync()`
   which call functions to each properties in an object.
-* Fix `kongObject.objectReduceAsync()`
+* Fix `kongUtilObject.objectReduceAsync()`
   which did not wait for callback's resolution.
 * Fix `findIndexAsync`, `findLastIndexAsync`, `someAsync` in `kongArray`
   which did not work in extended way.

@@ -17,6 +17,7 @@ import utilArray from "./array.mjs";
 import utilAsync from "./async.mjs";
 import utilDebug from "./debug.mjs";
 import utilDom from "./dom.mjs";
+import utilHtmlElem from "./html-elem.mjs";
 import utilEvent from "./event.mjs";
 import utilImage from "./image.mjs";
 import utilObject from "./object.mjs";
@@ -27,7 +28,17 @@ import utilBootstrap from "./bootstrap.mjs";
 export * from "./core.mjs";
 export * from "./array.mjs";
 export * from "./async.mjs";
-export * from "./dom.mjs";
+export {
+    $, $$, parseHTML, getNodes,
+    isEventInElement,
+    downloadURL, downloadData,
+    setText,
+    setAria,
+    setAttributes,
+    setAttributesInElement,
+    createElementFromJsonML
+} from "./dom.mjs";
+export * from "./html-elem.mjs";
 export * from "./debug.mjs";
 export * from "./event.mjs";
 export * from "./image.mjs";
@@ -42,8 +53,8 @@ export * from "./bootstrap.mjs";
  */
 export const extendPrototype = () => {
     utilArray.extendArrayPrototype();
-    utilDom.extendElementPrototype();
     utilEvent.extendEventTargetPrototype();
+    utilHtmlElem.extendElementPrototype();
 };
 
 
@@ -51,6 +62,7 @@ Object.assign(kongUtil,
     utilArray,
     utilAsync,
     utilDom,
+    utilHtmlElem,
     utilDebug,
     utilEvent,
     utilImage,

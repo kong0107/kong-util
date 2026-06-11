@@ -238,7 +238,7 @@ This is useful if you wanna pass this function as the argument in <code>Array.ma
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line35">line 35</a>
+        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line40">line 40</a>
     </li></ul></dd>
     
 
@@ -521,7 +521,7 @@ however, for selectors have no matches, empty array is returned instead of null.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line77">line 77</a>
+        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line82">line 82</a>
     </li></ul></dd>
     
 
@@ -584,214 +584,6 @@ however, for selectors have no matches, empty array is returned instead of null.
     
 
     
-    <h4 class="name" id="~createElement"><span class="type-signature">(inner) </span>createElement<span class="signature">(jsonml, namespace<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Element|TextNode}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    <p>Use JsonML to create an HTML element. For attributes setting, see <code>setAttributes</code>.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>jsonml</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">JsonML</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>namespace</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>set this to use <code>createElementNS()</code></p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line212">line 212</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li>setAttributes</li>
-        </ul>
-    </dd>
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Element</span>
-|
-
-<span class="param-type">TextNode</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
     <h4 class="name" id="~createElementFromJsonML"><span class="type-signature">(inner) </span>createElementFromJsonML<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
@@ -832,7 +624,7 @@ however, for selectors have no matches, empty array is returned instead of null.
     
 
     
-        <dt class="important tag-deprecated">Deprecated:</dt><dd class="yes-def tag-deprecated"><ul class="dummy"><li>Yes</li></ul></dd>
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>since v0.9.0</li></ul></dd>
     
 
     
@@ -846,7 +638,7 @@ however, for selectors have no matches, empty array is returned instead of null.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line295">line 295</a>
+        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line500">line 500</a>
     </li></ul></dd>
     
 
@@ -882,82 +674,19 @@ however, for selectors have no matches, empty array is returned instead of null.
     
 
     
-    <h4 class="name" id="~createElementFromTemplate"><span class="type-signature">(inner) </span>createElementFromTemplate<span class="signature">(template)</span><span class="type-signature"> &rarr; {Node}</span></h4>
+    <h4 class="name" id="~createElementFromTemplate"><span class="type-signature">(inner) </span>createElementFromTemplate<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
 
 
 
-<div class="description">
-    <p>Use <code>HTMLTemplateElement</code> to create an HTML element.</p>
-</div>
 
 
 
 
 
 
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>template</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-|
-
-<span class="param-type">Node</span>
-|
-
-<span class="param-type">HTMLTemplateElement</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><ul>
-<li>string: selector of the template element</li>
-<li>Node: the node to be cloned</li>
-<li>HTMLTemplateElement: the template where the first element is to be cloned</li>
-</ul></td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -981,341 +710,7 @@ however, for selectors have no matches, empty array is returned instead of null.
     
 
     
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line266">line 266</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a href="https://developer.mozilla.org/zh-TW/docs/Web/HTML/Element/template">https://developer.mozilla.org/zh-TW/docs/Web/HTML/Element/template</a></li>
-        </ul>
-    </dd>
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Node</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="~createInputComplex"><span class="type-signature">(inner) </span>createInputComplex<span class="signature">(inputAttrs, labelContent, wrapClassName<span class="signature-attributes">opt</span>, labelPosition<span class="signature-attributes">opt</span>, datalist<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {HTMLDivElement}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    <p>Create a container wrapping an input, a label, and maybe a datalist; with auto-generated UUID for linking to each other.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>inputAttrs</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"><p>attributes of &lt;input&gt;</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>labelContent</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-|
-
-<span class="param-type">JsonML</span>
-|
-
-<span class="param-type">HTMLlabelContentent</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"><p>content of &lt;label&gt; or itself</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>wrapClassName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    ''
-                
-                </td>
-            
-
-            <td class="description last"><p>className for wrapping &lt;div&gt;</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>labelPosition</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    'before'
-                
-                </td>
-            
-
-            <td class="description last"><p>'before' or 'after'</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>datalist</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;string></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    null
-                
-                </td>
-            
-
-            <td class="description last"><p>content of &lt;datalist&gt;. Empty array still results in creating &lt;datalist&gt;. Use null/false/undefined to disable that.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>since v0.9.1</li></ul></dd>
     
 
     
@@ -1329,7 +724,7 @@ however, for selectors have no matches, empty array is returned instead of null.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line578">line 578</a>
+        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line510">line 510</a>
     </li></ul></dd>
     
 
@@ -1354,252 +749,8 @@ however, for selectors have no matches, empty array is returned instead of null.
 
 
 
-<h5>Returns:</h5>
 
-        
 
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">HTMLDivElement</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-    <h5>Examples</h5>
-    
-    <pre class="prettyprint"><code>/// basic usage createInputComplex({type: 'text'}, 'labelHere~');</code></pre>
-
-    <pre class="prettyprint"><code>/// checked checkbox createInputComplex(     {type: 'checkbox', checked: true},     'here is a checkbox',     '',     'after' );</code></pre>
-
-    <pre class="prettyprint"><code>/// file selector createInputComplex(     {type: 'file', style: 'display: none;'},     ['span', {style: 'border: 1px solid #444;'}, 'File Selector'] );</code></pre>
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="~createSelectElement"><span class="type-signature">(inner) </span>createSelectElement<span class="signature">(attrs, options)</span><span class="type-signature"> &rarr; {HTMLSelectElement}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    <p>Create &lt;select&gt; and &lt;option&gt;s inside.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>attrs</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>attributes of &lt;select&gt;</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;string></span>
-|
-
-<span class="param-type">Map</span>
-|
-
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>key-value pairs of &lt;option&gt;s; or strings for &lt;option&gt;s with same value and textContent.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code></code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-|
-
-<span class="param-type">Array.&lt;string></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>value(s) of selected &lt;option&gt;s</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line667">line 667</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">HTMLSelectElement</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-    <h5>Examples</h5>
-    
-    <pre class="prettyprint"><code>/// basic usage createSelectElement({}, ['a', 'b', 'c'], 'b');</code></pre>
-
-    <pre class="prettyprint"><code>/// use object as key-value pairs. note "key"s would be shown texts. createSelectElement(     {multiple: true, style: 'height: 6em'},     {text1: 'value1', text2: 'value2', text3: 'value3'},     ['value2', 'value3'] );</code></pre>
 
 
 
@@ -1812,7 +963,7 @@ however, for selectors have no matches, empty array is returned instead of null.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line338">line 338</a>
+        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line249">line 249</a>
     </li></ul></dd>
     
 
@@ -1993,7 +1144,7 @@ however, for selectors have no matches, empty array is returned instead of null.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line324">line 324</a>
+        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line235">line 235</a>
     </li></ul></dd>
     
 
@@ -2047,16 +1198,12 @@ however, for selectors have no matches, empty array is returned instead of null.
     
 
     
-    <h4 class="name" id="~extendElementPrototype"><span class="type-signature">(inner) </span>extendElementPrototype<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="~extendElementPrototyp"><span class="type-signature">(inner) </span>extendElementPrototyp<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
 
 
-
-<div class="description">
-    <p>Add some methods to <code>Element</code> class.</p>
-</div>
 
 
 
@@ -2087,6 +1234,8 @@ however, for selectors have no matches, empty array is returned instead of null.
     
 
     
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>since v0.9.1</li></ul></dd>
+    
 
     
 
@@ -2099,7 +1248,7 @@ however, for selectors have no matches, empty array is returned instead of null.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line704">line 704</a>
+        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line519">line 519</a>
     </li></ul></dd>
     
 
@@ -2349,7 +1498,7 @@ however, for selectors have no matches, empty array is returned instead of null.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line149">line 149</a>
+        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line154">line 154</a>
     </li></ul></dd>
     
 
@@ -2567,7 +1716,7 @@ Could be assign to <code>Element.prototype</code>.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line306">line 306</a>
+        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line217">line 217</a>
     </li></ul></dd>
     
 
@@ -2779,7 +1928,7 @@ Defaults to return the first element in <code>document.body</code>.</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line101">line 101</a>
+        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line106">line 106</a>
     </li></ul></dd>
     
 
@@ -3066,7 +2215,7 @@ may cause browsers not creating elements but only the text nodes within them.</p
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line397">line 397</a>
+        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line306">line 306</a>
     </li></ul></dd>
     
 
@@ -3110,6 +2259,261 @@ may cause browsers not creating elements but only the text nodes within them.</p
 |
 
 <span class="param-type">Element</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~setAriaInElement"><span class="type-signature">(inner) </span>setAriaInElement<span class="signature">(attr, value<span class="signature-attributes">opt</span>, elem<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Set one of ARIA attribute</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>attr</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">NullLike</span>
+|
+
+<span class="param-type">true</span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>elem</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    this
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line292">line 292</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">undefined</span>
 
 
     </dd>
@@ -3471,7 +2875,7 @@ may cause browsers not creating elements but only the text nodes within them.</p
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line523">line 523</a>
+        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line430">line 430</a>
     </li></ul></dd>
     
 
@@ -3547,6 +2951,212 @@ may cause browsers not creating elements but only the text nodes within them.</p
 
     <pre class="prettyprint"><code>/// set body class
     setAttributes('body', {class: ['my-class', 'your-class']});</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~setAttributesInElement"><span class="type-signature">(inner) </span>setAttributesInElement<span class="signature">(attributes, elem<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>attributes</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>elem</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    this
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line322">line 322</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">undefined</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
 
 
 
@@ -3715,7 +3325,7 @@ may cause browsers not creating elements but only the text nodes within them.</p
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line367">line 367</a>
+        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line277">line 277</a>
     </li></ul></dd>
     
 
@@ -3759,6 +3369,220 @@ may cause browsers not creating elements but only the text nodes within them.</p
 |
 
 <span class="param-type">Element</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~setTextInElement"><span class="type-signature">(inner) </span>setTextInElement<span class="signature">(text<span class="signature-attributes">opt</span>, elem<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Set <code>textContent</code> of the Element. Skip arguments to remove children.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    ''
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>elem</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    this
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line265">line 265</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">undefined</span>
 
 
     </dd>
@@ -3989,7 +3813,7 @@ may cause browsers not creating elements but only the text nodes within them.</p
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line10">line 10</a>
+        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line15">line 15</a>
     </li></ul></dd>
     
 
@@ -4070,7 +3894,7 @@ may cause browsers not creating elements but only the text nodes within them.</p
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line20">line 20</a>
+        <a href="dom.mjs.html">dom.mjs</a>, <a href="dom.mjs.html#line25">line 25</a>
     </li></ul></dd>
     
 
@@ -4100,7 +3924,7 @@ may cause browsers not creating elements but only the text nodes within them.</p
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-kongUtil.html">kongUtil</a></li><li><a href="module-kongUtilArray.html">kongUtilArray</a></li><li><a href="module-kongUtilAsync.html">kongUtilAsync</a></li><li><a href="module-kongUtilBootstrap.html">kongUtilBootstrap</a></li><li><a href="module-kongUtilCore.html">kongUtilCore</a></li><li><a href="module-kongUtilDebug.html">kongUtilDebug</a></li><li><a href="module-kongUtilDom.html">kongUtilDom</a></li><li><a href="module-kongUtilEvent.html">kongUtilEvent</a></li><li><a href="module-kongUtilImage.html">kongUtilImage</a></li><li><a href="module-kongUtilObject.html">kongUtilObject</a></li><li><a href="module-kongUtilString.html">kongUtilString</a></li><li><a href="module-kongUtilWeb.html">kongUtilWeb</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-kongUtil.html">kongUtil</a></li><li><a href="module-kongUtilArray.html">kongUtilArray</a></li><li><a href="module-kongUtilAsync.html">kongUtilAsync</a></li><li><a href="module-kongUtilBootstrap.html">kongUtilBootstrap</a></li><li><a href="module-kongUtilCore.html">kongUtilCore</a></li><li><a href="module-kongUtilDebug.html">kongUtilDebug</a></li><li><a href="module-kongUtilDom.html">kongUtilDom</a></li><li><a href="module-kongUtilEvent.html">kongUtilEvent</a></li><li><a href="module-kongUtilHtmlElem.html">kongUtilHtmlElem</a></li><li><a href="module-kongUtilImage.html">kongUtilImage</a></li><li><a href="module-kongUtilObject.html">kongUtilObject</a></li><li><a href="module-kongUtilString.html">kongUtilString</a></li><li><a href="module-kongUtilWeb.html">kongUtilWeb</a></li></ul>
 </nav>
 
 <br class="clear">

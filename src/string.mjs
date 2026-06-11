@@ -12,7 +12,7 @@ export * from "./core.mjs";
  * @returns {string}
  */
 export function camelize(kebab) {
-    return kebab.replace(
+    return kebab.replaceAll(
         /-([a-z]\w+)/g,
         m => m[1].toUpperCase() + m.slice(2)
     );
@@ -26,7 +26,10 @@ export function camelize(kebab) {
  * @returns {string}
  */
 export function kebabize(camel) {
-    return camel.replace(/[A-Z]+(?![a-z])|[A-Z]/g, (m, p1) => (p1 ? "-" : "") + m.toLowerCase());
+    return camel.replaceAll(
+        /[A-Z]+(?![a-z])|[A-Z]/g,
+        (m, p1) => (p1 ? "-" : "") + m.toLowerCase()
+    );
 }
 
 

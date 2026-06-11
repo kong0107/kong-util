@@ -45,6 +45,7 @@ import utilArray from "./array.mjs";
 import utilAsync from "./async.mjs";
 import utilDebug from "./debug.mjs";
 import utilDom from "./dom.mjs";
+import utilHtmlElem from "./html-elem.mjs";
 import utilEvent from "./event.mjs";
 import utilImage from "./image.mjs";
 import utilObject from "./object.mjs";
@@ -55,7 +56,17 @@ import utilBootstrap from "./bootstrap.mjs";
 export * from "./core.mjs";
 export * from "./array.mjs";
 export * from "./async.mjs";
-export * from "./dom.mjs";
+export {
+    $, $$, parseHTML, getNodes,
+    isEventInElement,
+    downloadURL, downloadData,
+    setText,
+    setAria,
+    setAttributes,
+    setAttributesInElement,
+    createElementFromJsonML
+} from "./dom.mjs";
+export * from "./html-elem.mjs";
 export * from "./debug.mjs";
 export * from "./event.mjs";
 export * from "./image.mjs";
@@ -70,8 +81,8 @@ export * from "./bootstrap.mjs";
  */
 export const extendPrototype = () => {
     utilArray.extendArrayPrototype();
-    utilDom.extendElementPrototype();
     utilEvent.extendEventTargetPrototype();
+    utilHtmlElem.extendElementPrototype();
 };
 
 
@@ -79,6 +90,7 @@ Object.assign(kongUtil,
     utilArray,
     utilAsync,
     utilDom,
+    utilHtmlElem,
     utilDebug,
     utilEvent,
     utilImage,
@@ -100,7 +112,7 @@ export default kongUtil;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-kongUtil.html">kongUtil</a></li><li><a href="module-kongUtilArray.html">kongUtilArray</a></li><li><a href="module-kongUtilAsync.html">kongUtilAsync</a></li><li><a href="module-kongUtilBootstrap.html">kongUtilBootstrap</a></li><li><a href="module-kongUtilCore.html">kongUtilCore</a></li><li><a href="module-kongUtilDebug.html">kongUtilDebug</a></li><li><a href="module-kongUtilDom.html">kongUtilDom</a></li><li><a href="module-kongUtilEvent.html">kongUtilEvent</a></li><li><a href="module-kongUtilImage.html">kongUtilImage</a></li><li><a href="module-kongUtilObject.html">kongUtilObject</a></li><li><a href="module-kongUtilString.html">kongUtilString</a></li><li><a href="module-kongUtilWeb.html">kongUtilWeb</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-kongUtil.html">kongUtil</a></li><li><a href="module-kongUtilArray.html">kongUtilArray</a></li><li><a href="module-kongUtilAsync.html">kongUtilAsync</a></li><li><a href="module-kongUtilBootstrap.html">kongUtilBootstrap</a></li><li><a href="module-kongUtilCore.html">kongUtilCore</a></li><li><a href="module-kongUtilDebug.html">kongUtilDebug</a></li><li><a href="module-kongUtilDom.html">kongUtilDom</a></li><li><a href="module-kongUtilEvent.html">kongUtilEvent</a></li><li><a href="module-kongUtilHtmlElem.html">kongUtilHtmlElem</a></li><li><a href="module-kongUtilImage.html">kongUtilImage</a></li><li><a href="module-kongUtilObject.html">kongUtilObject</a></li><li><a href="module-kongUtilString.html">kongUtilString</a></li><li><a href="module-kongUtilWeb.html">kongUtilWeb</a></li></ul>
 </nav>
 
 <br class="clear">

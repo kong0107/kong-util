@@ -3,6 +3,11 @@
  */
 import utilDom from "./core.mjs";
 import {camelize, kebabize} from "./string.mjs";
+import {
+    createElement,
+    createElementFromTemplate as realCreateElementFromTemplate,
+    extendElementPrototype as realExtendElementPrototype
+} from "./html-elem.mjs";
 
 export * from "./core.mjs";
 
@@ -210,100 +215,6 @@ function createNodeSelector(filterRule, base) {
 
 
 /**
- * @func createElement
- * @desc Use JsonML to create an HTML element. For attributes setting, see `setAttributes`.
- * @see {@link setAttributes}
- * @param {JsonML} jsonml
- * @param {string} [namespace] - set this to use `createElementNS()`
- * @returns {Element | TextNode}
- */
-export function createElement(jsonml, namespace) {
-    if (typeof namespace !== 'string') namespace = null; // make this function safe for functions such as `Array.map()`.
-
-    if (jsonml instanceof Node)
-        return jsonml.cloneNode(true);
-
-    if (jsonml === null || jsonml === undefined || typeof jsonml === 'boolean')
-        return document.createTextNode('');
-
-    if (! (jsonml instanceof Array))
-        return document.createTextNode(jsonml);
-
-    let [tag, attributes, ...children] = jsonml;
-    if (jsonml[1] === null || typeof jsonml[1] !== 'object' || jsonml[1] instanceof Array) {
-        attributes = {};
-        [tag, ...children] = jsonml;
-    }
-
-    if (tag === 'svg') namespace = 'http://www.w3.org/2000/svg';
-    const ns = attributes.namespace ?? namespace;
-    const elem = ns ? document.createElementNS(ns, tag) : document.createElement(tag);
-
-    delete attributes.namespace;
-    setAttributesInElement(attributes, elem);
-
-    children = children
-        .reduce((acc, cur) => { // filter out empty node and merge text nodes
-            if (cur === null || cur === undefined || typeof cur === 'boolean' || cur === '') return acc;
-            if (acc.length) {
-                const last = acc.length - 1;
-                if (typeof acc[last] === 'string' && typeof cur === 'string') {
-                    acc[last] += cur;
-                    return acc;
-                }
-            }
-            acc.push(cur);
-            return acc;
-        }, [])
-        .map(c => createElement(c, ns))
-    ;
-
-    elem.append(...children);
-    return elem;
-}
-
-
-/**
- * @func createElementFromTemplate
- * @desc Use `HTMLTemplateElement` to create an HTML element.
- * @see {@link https://developer.mozilla.org/zh-TW/docs/Web/HTML/Element/template }
- *
- * @param {string | Node | HTMLTemplateElement} template
- *  - string: selector of the template element
- *  - Node: the node to be cloned
- *  - HTMLTemplateElement: the template where the first element is to be cloned
- *
- * @returns {Node}
- */
-export function createElementFromTemplate(template) {
-    if (typeof template === 'string') template = document.querySelector(template);
-    if (! (template instanceof Node)) throw new TypeError('`template` shall be a `Node` or a string selector to an `Element`.');
-
-    let clone;
-    if (template instanceof HTMLTemplateElement) {
-        if (template.content.childElementCount !== 1)
-            console.warn('only the first element is cloned');
-        clone = document.importNode(template.content, true).firstElementChild;
-    }
-    else clone = template.cloneNode(true);
-
-    $$('[id]', clone).forEach(elem => elem.removeAttribute('id'));
-    return clone;
-}
-
-
-/**
- * @deprecated
- * @func createElementFromJsonML
- * @desc used to be distinguished with my old JSON format between 0.6.0 to 0.8.x
- */
-export function createElementFromJsonML() {
-    console.warn('`kongUtilDom.createElementFromJsonML()` has been deprecated. Use `kongUtilDom.createElement` instead.');
-    return createElement(...arguments);
-}
-
-
-/**
  * @func isEventInElement
  * @desc
  *  Check wheather a mouse event happens inside an element, even its target is not the element.
@@ -352,14 +263,13 @@ export function downloadData(data, filename, mimeType = '') {
 
 
 /**
- * @private
  * @func setTextInElement
  * @desc Set `textContent` of the Element. Skip arguments to remove children.
  * @param {string} [text='']
  * @param {Element} [elem=this]
  * @returns {undefined}
  */
-function setTextInElement(text = '', elem = this) {
+export function setTextInElement(text = '', elem = this) {
     if (text) elem.textContent = text;
     else elem.replaceChildren();
 }
@@ -380,7 +290,6 @@ export function setText(s, text) {
 
 
 /**
- * @private
  * @func setAriaInElement
  * @desc Set one of ARIA attribute
  * @param {string} attr
@@ -388,7 +297,7 @@ export function setText(s, text) {
  * @param {Element} [elem=this]
  * @returns {undefined}
  */
-function setAriaInElement(attr, value = null, elem = this) {
+export function setAriaInElement(attr, value = null, elem = this) {
     if (attr != 'role' && ! attr.startsWith('aria-')) attr = `aria-${attr}`;
     if (isLikeNull(value)) elem.removeAttribute(attr);
     else elem.setAttribute(attr, (value === true) ? '' : value);
@@ -411,13 +320,12 @@ export function setAria(s, attr, value = null) {
 
 
 /**
- * @private
  * @func setAttributesInElement
  * @param {Object} attributes
  * @param {Element} [elem=this]
  * @returns {undefined}
  */
-function setAttributesInElement(attributes, elem = this) {
+export function setAttributesInElement(attributes, elem = this) {
     if (isLikeNull(attributes)) return;
 
     const nameSpaces = {};
@@ -519,7 +427,6 @@ function setAttributesInElement(attributes, elem = this) {
     }
 }
 
-
 /**
  * @func setAttributes
  * @desc Set attributes of an Element by an object as a map.
@@ -575,177 +482,47 @@ export function setAttributes(s, attributes) {
 }
 
 
-/**
- * @func createInputComplex
- * @desc Create a container wrapping an input, a label, and maybe a datalist; with auto-generated UUID for linking to each other.
- * @param {Object} inputAttrs - attributes of \<input>
- * @param {string | JsonML | HTMLlabelContentent} labelContent - content of \<label> or itself
- * @param {string} [wrapClassName=''] - className for wrapping \<div>
- * @param {string} [labelPosition='before'] - 'before' or 'after'
- * @param {Array.<string>} [datalist=null] - content of \<datalist>. Empty array still results in creating \<datalist>. Use null/false/undefined to disable that.
- * @returns {HTMLDivElement}
- *
- * @example /// basic usage
- *  createInputComplex({type: 'text'}, 'labelHere~');
- *
- * @example /// checked checkbox
- *  createInputComplex(
- *      {type: 'checkbox', checked: true},
- *      'here is a checkbox',
- *      '',
- *      'after'
- *  );
- *
- * @example /// file selector
- *  createInputComplex(
- *      {type: 'file', style: 'display: none;'},
- *      ['span', {style: 'border: 1px solid #444;'}, 'File Selector']
- *  );
- */
-export function createInputComplex(
-    inputAttrs,
-    labelContent,
-    wrapClassName = '',
-    labelPosition = 'before',
-    datalist = null
-) {
-    const inputId = inputAttrs.id = inputAttrs.id || crypto.randomUUID();
-
-    let jsonML = ['input', inputAttrs];
-    if (inputAttrs.type === 'textarea') {
-        const newAttrMap = Object.assign({}, inputAttrs);
-        delete newAttrMap.type;
-        let text = '';
-        if (Object.hasOwn(inputAttrs, 'value')) {
-            text = inputAttrs.value || '';
-            delete newAttrMap.value;
-        }
-        inputAttrs = newAttrMap;
-        jsonML = ['textarea', newAttrMap, text];
-    }
-    const inputElem = createElement(jsonML);
-
-    if (typeof labelContent === 'string')
-        labelContent = createElement(['label', {for: inputId}, labelContent]);
-    else if (Array.isArray(labelContent)) {
-        if (labelContent[0] !== 'label')
-            labelContent = createElement(['label', {for: inputId}, labelContent]);
-        else {
-            labelContent = createElement(labelContent);
-            labelContent.setAttribute('for', inputId);
-        }
-    }
-    else if (!(labelContent instanceof Element))
-        throw new TypeError('Unknown type ' + typeof labelContent);
-
-    const container = createElement(['div', {class: wrapClassName}]);
-    switch (labelPosition) {
-        case 'after': {
-            container.append(inputElem, labelContent);
-            break;
-        }
-        case 'before': {
-            container.append(labelContent, inputElem);
-            break;
-        }
-        default:
-            throw new RangeError(`Unknown position ${labelPosition}`);
-    }
-
-    if (datalist) {
-        const listId = crypto.randomUUID();
-        inputElem.setAttribute('list', listId);
-        container.append(e(
-            ['datalist', {id: listId}, ...datalist.map(value => ['option', {value}])]
-        ));
-    }
-
-    return container;
-}
-
-
-/**
- * @func createSelectElement
- * @desc Create \<select> and \<option>s inside.
- * @param {Object} attrs - attributes of \<select>
- * @param {Array.<string> | Map | Object} options - key-value pairs of \<option>s; or strings for \<option>s with same value and textContent.
- * @param {string | Array.<string>} - value(s) of selected \<option>s
- * @returns {HTMLSelectElement}
- *
- * @example /// basic usage
- *  createSelectElement({}, ['a', 'b', 'c'], 'b');
- *
- * @example /// use object as key-value pairs. note "key"s would be shown texts.
- *  createSelectElement(
- *      {multiple: true, style: 'height: 6em'},
- *      {text1: 'value1', text2: 'value2', text3: 'value3'},
- *      ['value2', 'value3']
- *  );
- *
- */
-export function createSelectElement(attrs, options, selected = []) {
-    let optionMLs = [];
-    if (typeof selected === 'string') selected = [selected];
-
-    if (Array.isArray(options))
-        optionMLs = options.map(value => ['option', {value}, value]);
-    else if (options instanceof Map)
-        options.forEach((value, key) => optionMLs.push(['option', {value}, key]));
-    else for (const key in options)
-        optionMLs.push(['option', {value: options[key]}, key]);
-
-    optionMLs.forEach(jsonml => {
-        if (selected.includes(jsonml[1].value)) jsonml[1].selected = true;
-    });
-    return createElement(['select', attrs, ...optionMLs]);
-}
-
-
-/**
- * @func extendElementPrototype
- * @desc Add some methods to `Element` class.
- */
-export const extendElementPrototype = () => {
-    const p = Element.prototype;
-    Object.assign(p, {
-        clear: p.replaceChildren,
-        hasEventIn: isEventInElement,
-        setText: setTextInElement,
-        setAria: setAriaInElement,
-        set: setAttributesInElement
-    });
-    [
-        'after',
-        'append',
-        'before',
-        'prepend',
-        'replaceChildren',
-        'replaceWith'
-    ].forEach(method => {
-        const origin = p[method];
-        p[method] = function () {
-            const nodes = [...arguments].map(node => {
-                return (node instanceof Array) ? createElement(node) : node;
-            });
-            return origin.apply(this, nodes);
-        };
-    });
-};
-
-
 Object.assign(utilDom, {
     $, $$, parseHTML, getNodes,
-    createElementFromTemplate,
-    createElementFromJsonML,
-    createElement,
+    // createElementFromTemplate, // moved to utilHtmlElem at v0.9.1
+    // createElementFromJsonML, // deprecated since v0.9.0
+    // createElement, // moved to utilHtmlElem since v0.9.1
     isEventInElement,
     downloadURL, downloadData,
     setText,
     setAria,
     setAttributes,
-    createInputComplex,
-    createSelectElement,
-    extendElementPrototype
+    setAttributesInElement,
+    // extendElementPrototype // moved to utilHtmlElem since v 0.9.1
 });
+
+
+/**
+ * @deprecated since v0.9.0
+ * @func createElementFromJsonML
+ * @desc used to be distinguished with my old JSON format between 0.6.0 to 0.8.x
+ */
+export function createElementFromJsonML() {
+    console.warn('`kongUtilDom.createElementFromJsonML()` has been deprecated. Use `kongUtilHtmlElem.createElement` instead.');
+    return createElement(...arguments);
+}
+
+/**
+ * @deprecated since v0.9.1
+ * @func createElementFromTemplate
+ */
+export function createElementFromTemplate() {
+    console.warn('`kongUtilDom.createElementFromTemplate() has been moved to `kongUtilHtmlElem`.');
+    return realCreateElementFromTemplate(...arguments);
+}
+
+/**
+ * @deprecated since v0.9.1
+ * @function extendElementPrototyp
+ */
+export function extendElementPrototype() {
+    console.warn('`kongUtilDom.extendElementPrototype() has been moved to `kongUtilHtmlElem`.');
+    return realExtendElementPrototype();
+}
 
 export default utilDom;

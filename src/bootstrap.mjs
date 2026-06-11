@@ -5,7 +5,7 @@ import utilBootstrap from "./core.mjs";
 import {
     createInputComplex,
     createSelectElement
-} from "./dom.mjs";
+} from "./html-elem.mjs";
 
 export * from "./core.mjs";
 

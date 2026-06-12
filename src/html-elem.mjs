@@ -97,6 +97,47 @@ export function createElementFromTemplate(template) {
 
 
 /**
+ * @func createButton
+ * @desc Shortcut for `createElement(['button', ...])` with default type 'button'
+ * @param {Object} attrs
+ * @param {string | JsonML} content
+ * @returns {HTMLButtonElement}
+ */
+export function createButton(attrs, content) {
+    return createElement(
+        ['button',
+            {type: 'button', ...attrs},
+            content
+        ]
+    );
+}
+
+
+/**
+ * @func addStyleSheet
+ * @desc Add a `<link rel="stylesheet" href="...">` before `</head>`.
+ * @param {string | URL} href
+ * @param {Object} [otherAttrs={}] - other attributes of `<link>`. `rel` could be overwritten if you want to add different things.
+ * @returns {undefined}
+ *
+ * @example /// basic usage
+ *  addStyleSheet('https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.css');
+ *
+ * @example /// works but not recommended
+ *  addStyleSheet('apple-icon-114.png', {rel: 'apple-touch-icon', size: '114x114', type: 'image/png'});
+ */
+export function addStyleSheet(href, otherAttrs = {}) {
+    document.head.append(createElement(
+        ['link', {
+            rel: 'stylesheet',
+            ...otherAttrs,
+            href: href.toString()
+        }]
+    ));
+}
+
+
+/**
  * @func createInputComplex
  * @desc Create a container wrapping an input, a label, and maybe a datalist; with auto-generated UUID for linking to each other.
  * @param {Object} inputAttrs - attributes of \<input>
@@ -222,6 +263,65 @@ export function createSelectElement(attrs, options, selected = []) {
 }
 
 
+/**
+ * @func createTable
+ * @desc Shortcut to create a simple HTML table.
+ *      For more complicated setting (ex. cell styling; resorting; transpose; filter), you should do it by yourself.
+ * @param {Array.<Array | Object>} records - each element is either an array, or an object maps names to data
+ * @param {Array.<string | JsonML> | Object} [columns] - each element is either a JsonML, or an object maps names to attributes of `<th>`
+ * @param {Object} [tableAttrs={}] - attributes of `<table>`
+ * @returns {HTMLTableElement}
+ *
+ * @example /// basic usage
+ *  createTable([[1, 2, 3], [4, 5], ['', '', 6]]);
+ *
+ * @example /// with column names
+ *  createTable(
+ *      [
+ *          [1, 2, 3],
+ *          {a: 4, b: 5},
+ *          {c: 6}
+ *      ],
+ *      ['a', 'b', 'c']
+ *  );
+ */
+export function createTable(
+    records,
+    columns,
+    tableAttrs = {}
+) {
+    const jsonml = ['table', tableAttrs];
+
+    let columnNames = [];
+    if (columns) {
+        let ths = [];
+        if (Array.isArray(columns)) {
+            columnNames = columns;
+            ths = columns.map(col => ['th', {scope: 'col'}, col]);
+        }
+        else for (const name in columns) {
+            columnNames.push(name);
+            const colInfo = columns[name];
+            if (typeof colInfo === 'string' || Array.isArray(colInfo))
+                ths.push(['th', {scope: 'col', title: name}, colInfo]);
+            else {
+                const content = colInfo.content || name;
+                delete colInfo.content;
+                ths.push(['th', {scope: 'col', title: name, ...colInfo}, content]);
+            }
+        }
+        jsonml.push(['thead', ['tr', ...ths]]);
+    }
+
+    const trs = records.map(fields => {
+        if (Array.isArray(fields)) return ['tr', ...fields.map(cellContent => ['td', cellContent])];
+        return ['tr', ...columnNames.map(name => ['td', {title: name}, fields[name] || ''])];
+    });
+    jsonml.push(['tbody', ...trs]);
+
+    return createElement(jsonml);
+}
+
 
 /**
  * @func extendElementPrototype
@@ -256,9 +356,13 @@ export const extendElementPrototype = () => {
 
 
 Object.assign(utilHtmlElem, {
+    addStyleSheet,
     createElement,
+    createElementFromTemplate,
+    createButton,
     createInputComplex,
-    createSelectElement
+    createSelectElement,
+    createTable
 });
 
 export default utilHtmlElem;

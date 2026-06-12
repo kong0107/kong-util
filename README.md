@@ -169,12 +169,41 @@ fetchAutoReject(url3)
 ```
 
 
+### utilEvent
+
+```js
+function foo1() {console.log('aaa');}
+
+listen('#my-button', 'click', foo1);
+unlisten('#my-button', 'click', foo1);
+
+listenMulti('button', 'click', foo1); // applies to all <button>s
+
+// after prototype extended
+$('#my-button').listen('click', foo1); // alias to `addEventListener`
+$('#my-button').unlisten('click', foo1); // alias to `removeEventListener`
+```
+
 ### utilDom
 
 ```js
 // creates an HTMLElement by a string
 parseHTML("<EM>hi!</em>");
 
+// sets attributes of an Element
+setAttributes('#my-button', {
+    type: "button",
+    style: "border: 1px solid red",
+    onclick: () => console.log("zzz")
+});
+
+setText('h1', 'new text here');
+```
+
+
+### utilHtmlElem
+
+```js
 // creates an HTMLElement by [JsonML](http://www.jsonml.org/)
 createElement(
     ["ul",
@@ -192,14 +221,15 @@ createSelectElement(
     'b' //< default selected option
 );
 
-// sets attributes of an Element
-setAttributes('#my-button', {
-    type: "button",
-    style: "border: 1px solid red",
-    onclick: () => console.log("zzz")
-});
-
-setText('h1', 'new text here');
+// creates a simple table
+createTable(
+    [
+        ['r1c1', 'r1c2', 'r1c3'],
+        ['r2c1', 'r2c2', 'r2c3'],
+        ['r3c1', 'r3c2', 'r3c3']
+    ],
+    ['col #1', 'col #2', 'col #3']
+);
 
 // after prototype extended
 $('#my-button').set({
@@ -212,23 +242,8 @@ $('h1').setText('new text here');
 ```
 
 
-### utilEvent
-
-```js
-function foo1() {console.log('aaa');}
-
-listen('#my-button', 'click', foo1);
-unlisten('#my-button', 'click', foo1);
-
-listenMulti('button', 'click', foo1); // applies to all <button>s
-
-// after prototype extended
-$('#my-button').listen('click', foo1); // alias to `addEventListener`
-$('#my-button').unlisten('click', foo1); // alias to `removeEventListener`
-```
-
-
 ### utilImage
+
 ```js
 // resize the chosen file and then show it
 resizeImage(

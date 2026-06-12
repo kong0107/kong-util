@@ -54,7 +54,7 @@ export function listenMulti(targets, eventTypes, listeners, options) {
 }
 
 /**
- * @deprecated
+ * @deprecated since v0.8.2
  * @func listens
  */
 export function listens() {
@@ -86,7 +86,7 @@ export function unlistenMulti(targets, eventTypes, listeners, options) {
 }
 
 /**
- * @deprecated
+ * @deprecated since v0.8.2
  * @func listens
  */
 export function unlistens() {

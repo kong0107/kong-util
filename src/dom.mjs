@@ -367,7 +367,9 @@ export function setAttributesInElement(attributes, elem = this) {
 
         name = name.toLowerCase();
         if (name.startsWith('on')) {
-            listenMulti(elem, name.slice(2), value);
+            const type = name.slice(2);
+            const listeners = Array.isArray(value) ? value : [value];
+            listeners.forEach(func => elem.addEventListener(type, func));
             continue;
         }
         switch (name) {

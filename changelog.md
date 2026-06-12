@@ -1,6 +1,14 @@
 # ChangeLog of kong-util
 
-## 0.9.1
+## 0.9.2 (260612)
+* Fix `kongUtilDom.setAttributesInElement()`
+  which failed to set listeners
+  and affected `setAttributes()` and `createElement()`.
+* Add `createButton()` and `createTable()` in `kongUtilHtmlElem`.
+* Add `kongUtilHtmlElem.addStyleSheet()`
+  which creates and then appends it at the end of `document.head`.
+
+## 0.9.1 (260611)
 * Create `kongUtilHtmlElem` category
   which focus on HTMLElement and sperated from `kongUtilDom`.
 * Move `createElement()`, `createElementFromTemplate()`, and `extendElementPrototype()` into kongUtilHtmlElem`;
@@ -152,7 +160,7 @@
 
 ## 0.7.3 (230509)
 * Update `kongUtilEvent`
-  to make `target` argument able to be a string, which makes `listen('body', ...)` meaningfule.
+  to make `target` argument able to be a string, which makes `listen('body', ...)` meaningful.
   Before, one should use `listen($('body'), ...)` to make the function works.
 
 ## 0.7.2 (230324)

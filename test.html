@@ -9,31 +9,72 @@
     <script src="./dist/event.js"></script>
     <script src="./dist/image.js"></script>
     <script src="./dist/bootstrap.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
     <h1>test page</h1>
     <input type="file">
-    <img>
+    <img alt="請選擇圖片">
     <script>
         // kongUtilDom.use();
         // kongUtilEvent.use();
         // kongUtilImage.use();
+        kongUtilHtmlElem.use();
+        addStyleSheet('https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css');
+
         kongUtilEvent.listen('[type=file]', 'change', async (event) => {
             const file = event.target.files[0];
             if(!file) return console.debug('no file');
             kongUtilDom.$('img').src = await kongUtilImage.resizeImage(file, {fit: 'scaleDown', height: 1000, returnType: 'dataURL'});
         });
+
         document.body.append(
-            kongUtilHtmlElem.createInputComplex({type: 'file', style: 'display: none;'}, ['span', {style: 'border: 1px solid #444; cursor: pointer;'}, 'File Selector']),
-            kongUtilHtmlElem.createSelectElement(
+            createInputComplex(
+                {type: 'file', class: 'd-none'},
+                ['label', {class: 'btn btn-primary'}, 'File Selector 2'],
+                'my-2'
+            ),
+            createSelectElement(
                 {multiple: true, style: 'height: 5em'},
                 {text1: 'value1', text2: 'value2', text3: 'value3'},
                 ['value2', 'value3']
             ),
+
             kongUtilBootstrap.bsSwitch({}, 'switch'),
             kongUtilBootstrap.bsInputFloatingLabel({}, 'floating label #1', ['a1', 'a2', 'a3']),
-            kongUtilBootstrap.bsSelectFloatingLabel({}, 'floating label #2', ['a1', 'a2', 'a3'], 'a3')
+            kongUtilBootstrap.bsSelectFloatingLabel({}, 'floating label #2', ['a1', 'a2', 'a3'], 'a3'),
+
+            createTable(
+                [
+                    ['r1c1', 'r1c2', 'r1c3'],
+                    ['r2c1', 'r2c2', 'r2c3'],
+                    ['r3c1', 'r3c2', 'r3c3']
+                ],
+                ['col #1', 'col #2', 'col #3'],
+                {class: 'table-bordered w-25'}
+            ),
+            createTable(
+                [
+                    [1, 2, 3],
+                    {a: 4, b: 5},
+                    {c: 6}
+                ],
+                ['a', 'b', 'c'],
+                {class: 'table-bordered w-25 my-3'}
+            ),
+            createTable(
+                [
+                    {name: 'Alex', sex: 'F', age: '30'},
+                    {name: 'Elise', age: '40', hobby: 'golf'},
+                    {name: 'Zebuzeru', age: '12', location: 'Taiwan'}
+                ],
+                {
+                    name: 'Name',
+                    sex: {content: 'Gender', class: 'fw-normal text-secondary'},
+                    hobby: {content: 'Interest', class: 'bg-secondary'},
+                    location: {content: 'Country', style: 'color: red; cursor: pointer', onclick: () => alert('Taiwan is a country.')}
+                },
+                {class: 'table-bordered w-25'}
+            ),
         );
     </script>
 </body>

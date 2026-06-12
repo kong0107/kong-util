@@ -64,6 +64,407 @@
     
 
     
+    <h4 class="name" id="~addStyleSheet"><span class="type-signature">(inner) </span>addStyleSheet<span class="signature">(href, otherAttrs<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Add a <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;...&quot;&gt;</code> before <code>&lt;/head&gt;</code>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>href</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">URL</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>otherAttrs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+
+            <td class="description last"><p>other attributes of <code>&lt;link&gt;</code>. <code>rel</code> could be overwritten if you want to add different things.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="html-elem.mjs.html">html-elem.mjs</a>, <a href="html-elem.mjs.html#line116">line 116</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">undefined</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>/// basic usage addStyleSheet('https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.css');</code></pre>
+
+    <pre class="prettyprint"><code>/// works but not recommended addStyleSheet('apple-icon-114.png', {rel: 'apple-touch-icon', size: '114x114', type: 'image/png'});</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~createButton"><span class="type-signature">(inner) </span>createButton<span class="signature">(attrs, content)</span><span class="type-signature"> &rarr; {HTMLButtonElement}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Shortcut for <code>createElement(['button', ...])</code> with default type 'button'</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>attrs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>content</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">JsonML</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="html-elem.mjs.html">html-elem.mjs</a>, <a href="html-elem.mjs.html#line99">line 99</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">HTMLButtonElement</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="~createElement"><span class="type-signature">(inner) </span>createElement<span class="signature">(jsonml, namespace<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Element|TextNode}</span></h4>
     
 
@@ -719,7 +1120,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="html-elem.mjs.html">html-elem.mjs</a>, <a href="html-elem.mjs.html#line99">line 99</a>
+        <a href="html-elem.mjs.html">html-elem.mjs</a>, <a href="html-elem.mjs.html#line140">line 140</a>
     </li></ul></dd>
     
 
@@ -938,7 +1339,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="html-elem.mjs.html">html-elem.mjs</a>, <a href="html-elem.mjs.html#line188">line 188</a>
+        <a href="html-elem.mjs.html">html-elem.mjs</a>, <a href="html-elem.mjs.html#line229">line 229</a>
     </li></ul></dd>
     
 
@@ -990,6 +1391,264 @@
     <pre class="prettyprint"><code>/// basic usage createSelectElement({}, ['a', 'b', 'c'], 'b');</code></pre>
 
     <pre class="prettyprint"><code>/// use object as key-value pairs. note "key"s would be shown texts. createSelectElement(     {multiple: true, style: 'height: 6em'},     {text1: 'value1', text2: 'value2', text3: 'value3'},     ['value2', 'value3'] );</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~createTable"><span class="type-signature">(inner) </span>createTable<span class="signature">(records, columns<span class="signature-attributes">opt</span>, tableAttrs<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {HTMLTableElement}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Shortcut to create a simple HTML table.
+For more complicated setting (ex. cell styling; resorting; transpose; filter), you should do it by yourself.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>records</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;(Array|Object)></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>each element is either an array, or an object maps names to data</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>columns</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;(string|JsonML)></span>
+|
+
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>each element is either a JsonML, or an object maps names to attributes of <code>&lt;th&gt;</code></p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tableAttrs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+
+            <td class="description last"><p>attributes of <code>&lt;table&gt;</code></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="html-elem.mjs.html">html-elem.mjs</a>, <a href="html-elem.mjs.html#line266">line 266</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">HTMLTableElement</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>/// basic usage createTable([[1, 2, 3], [4, 5], ['', '', 6]]);</code></pre>
+
+    <pre class="prettyprint"><code>/// with column names createTable(     [         [1, 2, 3],         {a: 4, b: 5},         {c: 6}     ],     ['a', 'b', 'c'] );</code></pre>
 
 
 
@@ -1051,7 +1710,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="html-elem.mjs.html">html-elem.mjs</a>, <a href="html-elem.mjs.html#line226">line 226</a>
+        <a href="html-elem.mjs.html">html-elem.mjs</a>, <a href="html-elem.mjs.html#line326">line 326</a>
     </li></ul></dd>
     
 
